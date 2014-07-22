@@ -1,0 +1,19 @@
+<template name="landing">
+  {{#if noGoal}}
+    {{> yourGoal}}
+  {{/if}}
+
+  {{#if goalWithoutDeadline}}
+    {{> deadline}}
+  {{/if}}
+
+  {{#if deadlineWithoutCharity}}
+    {{> charity}}
+  {{/if}}
+
+  {{#if theCharity}}
+    {{> finalInfo}}
+  {{/if}}
+
+  {{> advertising}}
+</template>

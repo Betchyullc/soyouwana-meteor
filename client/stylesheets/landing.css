@@ -1,0 +1,14 @@
+.box {
+  border: solid 1px;
+  position: absolute;
+  left: 33%;
+  top: 33%;
+  width: 33%;
+  height: 33%;
+  background-color: #ddd;
+}
+.top-bar {
+  height:10%;
+  background-color: #adf;
+  border-bottom: solid 2px;
+}
