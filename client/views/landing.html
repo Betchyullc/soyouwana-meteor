@@ -12,7 +12,11 @@
   {{/if}}
 
   {{#if theCharity}}
-    {{> finalInfo}}
+    {{#if currentUser}}
+      {{> finalInfo}}
+    {{else}}
+      {{> signup}}
+    {{/if}}
   {{/if}}
 
   {{> advertising}}

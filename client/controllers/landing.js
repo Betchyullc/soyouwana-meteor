@@ -1,24 +1,3 @@
-Template.landing.helpers({
-  noGoal : function(){
-    return Session.get('goal') == undefined;
-  },
-  goal : function(){
-    return Session.get('goal');
-  },
-  deadlineWithoutCharity : function(){ 
-    return Session.get('deadline') != undefined
-           && Session.get('charity') == undefined;
-  },
-  goalWithoutDeadline : function(){
-    return Session.get('goal') != undefined
-           && Session.get('deadline') == undefined;
-  },
-  theCharity : function(){
-    return Session.get('charity');
-  }
-
-});
-
 var next = function(e){
   if (Session.get('charity') == undefined) {
     $('.box').animate({left: '-33%'},500);
@@ -42,6 +21,29 @@ var next = function(e){
   }
 };
 
+Template.landing.helpers({
+  noGoal : function(){
+    return Session.get('goal') == undefined;
+  },
+  goal : function(){
+    return Session.get('goal');
+  },
+  deadlineWithoutCharity : function(){ 
+    return Session.get('deadline') != undefined
+           && Session.get('charity') == undefined;
+  },
+  goalWithoutDeadline : function(){
+    return Session.get('goal') != undefined
+           && Session.get('deadline') == undefined;
+  },
+  theCharity : function(){
+    return Session.get('charity');
+  },
+  goalMade : function(){
+    return Session.get('goalId');
+  }
+});
+
 Template.landing.events({
   'click button' : next,
   'keypress' : function(e){
@@ -58,3 +60,4 @@ Template.yourGoal.rendered = function(){
 Template.deadline.rendered = Template.yourGoal.rendered;
 Template.charity.rendered = Template.yourGoal.rendered;
 Template.finalInfo.rendered = Template.yourGoal.rendered;
+Template.signup.rendered = Template.yourGoal.rendered;
