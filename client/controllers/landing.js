@@ -8,7 +8,9 @@ var next = function(e){
           var goalId = Goals.insert({
             charity: Session.get('charity'),
             goal: Session.get('goal'),
-            deadline: Session.get('deadline')
+            deadline: Session.get('deadline'),
+            owner: Meteor.userId(),
+            created_at: Date.now()
           });
           Session.set('goalId', goalId);
         } else {
@@ -59,5 +61,8 @@ Template.yourGoal.rendered = function(){
 };
 Template.deadline.rendered = Template.yourGoal.rendered;
 Template.charity.rendered = Template.yourGoal.rendered;
-Template.finalInfo.rendered = Template.yourGoal.rendered;
 Template.signup.rendered = Template.yourGoal.rendered;
+Template.finalInfo.rendered = function(){
+  Template.yourGoal.rendered();
+  Goals.update(Session.get('goalId'), {$set: {owner : Meteor.userId()}});
+};

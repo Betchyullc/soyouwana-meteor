@@ -1,10 +1,14 @@
 <template name="goalDetail">
   <div>
     <h1>
-      {{goal}}
+      I will {{goal}} by {{deadline}} for {{charity}}
     </h1>
-    <p>deadline: {{deadline}}</p>
-    <p>charity: {{charity}}</p>
-    <a href="/goal/{{_id}}/edit">edit</a>
+    {{#if ownersGoal}}
+      <a href="/goal/{{_id}}/edit">edit</a>
+    {{/if}}
+    <div class="donate-box">
+      <p>${{donatedAmount}} raised by {{donatorCount}} people in {{timeLive}} days</p>
+      <a href="/donate/{{_id}}">donate</a>
+    </div>
   </div>
 </template>

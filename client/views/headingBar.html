@@ -2,5 +2,8 @@
   <div class="top-bar">
     <a href="{{pathFor 'landing'}}">Logo</a>
     <a href="{{pathFor 'findGoal'}}">Find</a>
+    {{#unless sessionGet 'goalId'}}
+      <span style="float:right">{{> loginButtons align="right"}}</span>
+    {{/unless}}
   </div>
 </template>
