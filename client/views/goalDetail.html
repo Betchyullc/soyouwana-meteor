@@ -10,5 +10,10 @@
       <p>${{donatedAmount}} raised by {{donatorCount}} people in {{timeLive}} days</p>
       <a href="/donate/{{_id}}">donate</a>
     </div>
+    <div class="donations-feed">
+      {{#each donation}}
+        <p>${{amount}} given by {{name}} at {{created_at}}</p>
+      {{/each}}
+    </div>
   </div>
 </template>

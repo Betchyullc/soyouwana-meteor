@@ -17,4 +17,7 @@ Template.goalDetail.helpers({
   timeLive : function(){
     return parseInt((Date.now() - this.created_at)/(1000*60*60*24));
   },
+  donation : function(){
+    return Donations.find({goalId: this._id});
+  }
 });

@@ -1,23 +1,25 @@
 <template name="landing">
-  {{#if noGoal}}
-    {{> yourGoal}}
-  {{/if}}
-
-  {{#if goalWithoutDeadline}}
-    {{> deadline}}
-  {{/if}}
-
-  {{#if deadlineWithoutCharity}}
-    {{> charity}}
-  {{/if}}
-
-  {{#if theCharity}}
-    {{#if currentUser}}
-      {{> finalInfo}}
-    {{else}}
-      {{> signup}}
+  <div class="landing-body">
+    {{#if noGoal}}
+      {{> yourGoal}}
     {{/if}}
-  {{/if}}
+
+    {{#if goalWithoutDeadline}}
+      {{> deadline}}
+    {{/if}}
+
+    {{#if deadlineWithoutCharity}}
+      {{> charity}}
+    {{/if}}
+
+    {{#if theCharity}}
+      {{#if currentUser}}
+        {{> finalInfo}}
+      {{else}}
+        {{> signup}}
+      {{/if}}
+    {{/if}}
+  </div>
 
   {{> advertising}}
 </template>
