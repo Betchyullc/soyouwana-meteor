@@ -1,19 +1,40 @@
 <template name="goalDetail">
-  <div>
-    <h1>
-      I will {{goal}} by {{deadline}} for {{charity}}
-    </h1>
-    {{#if ownersGoal}}
-      <a href="/goal/{{_id}}/edit">edit</a>
-    {{/if}}
-    <div class="donate-box">
-      <p>${{donatedAmount}} raised by {{donatorCount}} people in {{timeLive}} days</p>
-      <a href="/donate/{{_id}}">donate</a>
-    </div>
-    <div class="donations-feed">
-      {{#each donation}}
-        <p>${{amount}} given by {{name}} at {{created_at}}</p>
-      {{/each}}
+  <div class="container">
+    <div class="goalDetail-body">
+      <h1>
+        I will {{goal}} by {{deadline}} for {{charity}}
+      </h1>
+      {{#if ownersGoal}}
+        <a href="/goal/{{_id}}/edit">edit</a>
+      {{/if}}
+      <div class="donate-box">
+        <p>${{donatedAmount}} raised by {{donatorCount}} people in {{timeLive}} days</p>
+        <a href="/donate/{{_id}}">donate</a>
+      </div>
+      <div class="donations-feed">
+        {{#each donation}}
+          <p>${{amount}} given by {{name}} at {{created_at}}</p>
+        {{else}}
+          <p>No donations yet :(</p>
+        {{/each}}
+      </div>
+      <div class="goal-media-container">
+        {{#if videoEmbed}}
+          {{{videoEmbed}}}
+        {{else}}
+          {{#if photoURL}}
+            <img src="{{photoURL}}"/>
+          {{else}}
+            <img src="/bg.jpg"/>
+          {{/if}}
+        {{/if}}
+      </div>
+      <div class="why-goal-box">
+        <p>{{whyGoal}}</p>
+      </div>
+      <div class="why-charity-box">
+        <p>{{whyCharity}}</p>
+      </div>
     </div>
   </div>
 </template>

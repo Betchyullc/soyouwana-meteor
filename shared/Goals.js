@@ -6,6 +6,9 @@ if (Meteor.isServer) {
       Donations.find({goalId: id})
     ];
   });
+  Meteor.publish("goal", function(id){
+    return Goals.find({_id: id});
+  });
   Meteor.publish("goals", function(){
     return Goals.find({});
   });

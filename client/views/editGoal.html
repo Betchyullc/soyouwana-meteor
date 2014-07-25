@@ -1,10 +1,21 @@
 <template name="editGoal">
-  <div>
+  <div class="edit-goal-body">
     <h1>
-      {{goal}}
+      Customize your Goal
     </h1>
-    <p>deadline: {{deadline}}</p>
-    <p>charity: {{charity}}</p>
-    <a href="/goal/{{_id}}">view</a>
+    <button id="savechanges">Save</button>
+    {{#if userHasName}}
+      <p>Your name: <input id="username" type="text" value="{{name}}"/></p>
+    {{else}}
+      <p>Your name: <input id="username" type="text" placeholder="So your friends will recognize you"/></p>
+    {{/if}}
+    <p>Your Goal: <input id="goal" type="text" value="{{goal}}"/></p>
+    <p>The Deadline: <input id="deadline" type="text" value="{{deadline}}" placeholder="MM/DD/YYYY"/></p>
+    <p>Your Charity: <input id="charity" type="text" value="{{charity}}"/></p>
+    <a href="/goal/{{_id}}">View Goal</a>
+    <p>Why I want to accomplish this: <textarea id="whyGoal">{{whyGoal}}</textarea></p>
+    <p>Why I picked this charity: <textarea id="whyCharity">{{whyCharity}}</textarea></p>
+    <p>Photo URL: <input id="photoURL" type="text" value="{{photoURL}}"/></p>
+    <p>Video Embed: <input id="videoEmbed" type="text" value="{{videoEmbed}}"/></p>
   </div>
 </template>

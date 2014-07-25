@@ -6,10 +6,12 @@
 
     {{#if goalWithoutDeadline}}
       {{> deadline}}
+      {{> backBtn}}
     {{/if}}
 
     {{#if deadlineWithoutCharity}}
       {{> charity}}
+      {{> backBtn}}
     {{/if}}
 
     {{#if theCharity}}
@@ -22,4 +24,11 @@
   </div>
 
   {{> advertising}}
+</template>
+
+
+<template name="backBtn">
+  <div class="back-btn">
+    &#8592;
+  </div>
 </template>

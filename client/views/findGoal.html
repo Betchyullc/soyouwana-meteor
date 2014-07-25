@@ -1,9 +1,9 @@
 <template name="findGoal">
-  <input type="text" class="search"/>
   <div>
   {{#each goals}}
     <div class="goal-box">
       goal
+      <a href="/goal/{{_id}}">{{goal}}</a>
     </div>
   {{/each}}
   </div>

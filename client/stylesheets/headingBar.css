@@ -1,5 +1,69 @@
 .top-bar {
   height:10%;
-  background-color: #adf;
+  background-color: #087CB1;
   font-family: proxima-nova-light;
+  text-align:center;
+}
+.logo {
+  height:100%;
+  float:left;
+}
+.logo img {
+  height:100%;
+}
+.v-cntr-outer2, .v-cntr-outer {
+  height:100%;
+  display: inline-block;
+}
+.v-cntr-outer:before {
+  display: block;
+  height: 50%;
+  content:"";
+}
+.v-cntr-inner {
+  display:inline;
+  vertical-align: top;
+  line-height:0;
+}
+.v-cntr-inner2 {
+  position:relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.find-goal-link {
+  float:right;
+  margin-right:20px;
+}
+.find-goal-link a {
+  font-size:30px;
+  color:#fff;
+  text-decoration:none;
+}
+.login-btns {
+  margin:5px;
+  float:right;
+  color:#fff;
+}
+#search {
+  border-radius:0;
+  border:none;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  font-family: proxima-nova-light;
+}
+#search::-webkit-input-placeholder {
+  color: white;
+}
+#search:-moz-placeholder { /* Firefox 18- */
+  color: white;  
+}
+#search::-moz-placeholder {  /* Firefox 19+ */
+  color: white;  
+}
+#search:-ms-input-placeholder {  
+  color: white;  
 }

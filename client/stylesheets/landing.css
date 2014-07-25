@@ -5,9 +5,10 @@ html,body{
   background-color: #ddd;
   height:90%;
   width:100%;
-  background-image: url('http://wallpaperscraft.com/image/79930/2871x1806.jpg?orig=1');
+  background-image: url('bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position:center bottom;
 }
 .box {
   position: absolute;
@@ -56,12 +57,23 @@ html,body{
   margin:0;
   padding:0;
   padding-left:9px;
+  padding-right:19px;
   border:1px solid black;
-  font-family:proxima-nova-black;
+  font-family:proxima-nova-light;
   color: #111;
+  border-radius:0;
+}
+.goal-bar input#deadline{
+  padding-left:39px;
 }
 .goal-bar input:focus{
   border:1px solid black;
+}
+.goal-bar img {
+  position: absolute;
+  left: 14.5%;
+  width: 22px;
+  bottom: 33px;
 }
 .go-btn {
   margin:0;
@@ -74,10 +86,34 @@ html,body{
   color:#fff;
   position:relative;
   left:-12px;
-  top:2px;
   font-family:proxima-nova-thin;
   font-size:20px;
 }
 .go-btn:hover {
   background-color:#3ECF4F;
+}
+.charity-list {
+  font-size: 19px;
+  text-align: left;
+  background-color: #fff;
+}
+.charity-list li {
+  padding-left: 5px;
+}
+.charity-list li:hover {
+  background-color: #1770B0;
+  color:#fff;
+}
+.back-btn {
+  position:absolute;
+  top:40%;
+  left:1%;
+  height:50px;
+  width:50px;
+  border-radius:25px;
+  background-color:#ddd;
+  text-align:center;
+  font-size:40px;
+  line-height:50px;
+  cursor:pointer;
 }

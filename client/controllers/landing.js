@@ -1,10 +1,17 @@
+var isBad = function(val){
+  return val == "";
+};
 var next = function(e){
+  var val = $('.goal-bar input').val().trim();
+  if (isBad(val)){
+    return;
+  }
   if (Session.get('charity') == undefined) {
     $('.box').animate({left: '-33%'},500);
     setTimeout(function(){
       if (Session.get('goal')) {
         if (Session.get('deadline')){
-          Session.set('charity', $('input').val());
+          Session.set('charity', val);
           var goalId = Goals.insert({
             charity: Session.get('charity'),
             goal: Session.get('goal'),
@@ -14,10 +21,10 @@ var next = function(e){
           });
           Session.set('goalId', goalId);
         } else {
-          Session.set('deadline', $('input').val());
+          Session.set('deadline', val);
         } 
       } else {
-        Session.set('goal', $('input').val());
+        Session.set('goal', val);
       }
     }, 600);
   }
@@ -48,6 +55,13 @@ Template.landing.helpers({
 
 Template.landing.events({
   'click button' : next,
+  'click .back-btn': function(){
+    if (Session.get('deadline')){
+      Session.set('deadline', undefined);
+    } else {
+      Session.set('goal', undefined);
+    } 
+  },
   'keypress' : function(e){
     if(e.keyCode == 13)
       next();
@@ -59,7 +73,10 @@ Template.yourGoal.rendered = function(){
   $('.box').animate({left:'33%'}, 600);
 //  $('input').focus();
 };
-Template.deadline.rendered = Template.yourGoal.rendered;
+Template.deadline.rendered = function(){
+  Template.yourGoal.rendered();
+  $('input#deadline').datepicker();
+};
 Template.charity.rendered = Template.yourGoal.rendered;
 Template.signup.rendered = Template.yourGoal.rendered;
 Template.finalInfo.rendered = function(){
