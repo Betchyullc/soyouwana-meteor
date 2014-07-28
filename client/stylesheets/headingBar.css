@@ -44,8 +44,6 @@
   text-decoration:none;
 }
 .login-btns {
-  margin:5px;
-  float:right;
   color:#fff;
 }
 #search {
@@ -66,4 +64,8 @@
 }
 #search:-ms-input-placeholder {  
   color: white;  
+}
+.search-icon {
+  width: 22px;
+  right: 31px;
 }

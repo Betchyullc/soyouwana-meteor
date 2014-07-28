@@ -9,7 +9,7 @@ Template.goalDetail.helpers({
     for( var i = 0; i < dons.length; i++){
       amt += parseInt(dons[i].amount);
     }
-    return amt;
+    return parseFloat(amt).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3);
   },
   donatorCount : function(){
     return Donations.find({goalId: this._id}).count();
@@ -19,5 +19,11 @@ Template.goalDetail.helpers({
   },
   donation : function(){
     return Donations.find({goalId: this._id});
+  },
+  donationCount : function(){
+    return Donations.find({goalId: this._id}).count();
+  },
+  amountF : function(){
+    return parseFloat(this.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3);
   }
 });
