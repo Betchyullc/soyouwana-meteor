@@ -7,32 +7,38 @@
   text-align:center;
 }
 .container h1 {
-  font-family:proxima-nova-black;
-  font-size:25px;
+  font-family:proxima-nova-bold;
+  font-size:40px;
   margin-top:25px;
+  margin-bottom:10px;
+}
+.container h2 {
+  font-size:20px;
   margin-bottom:10px;
 }
 .goalDetail-body {
   width:70%;
-  margin-top:3%;
+  margin-top:2%;
   background-color: #fff;
   display: inline-block;
-  border-radius: 10px;
-  border: 1px solid #aaa;
+  border-radius: 15px;
+  border: 2px solid #aaa;
   padding:10px;
+  border-bottom: solid 5px #aaa;
 }
-.goal-media-container, .why-goal-box, .why-charity-box {
+.goal-media-container, .data-box {
   width:65%;
   margin-left:1%;
   margin-right:1%;
   margin-top:10px;
   margin-bottom:10px;
   float:left;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 1px solid #aaa;
+  border-bottom: solid 3px #aaa;
 }
 .goal-media-container img{
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .owner-info {
   padding: 20px;
@@ -42,61 +48,86 @@
 }
 .donate-box, .donations-feed {
   border: solid 1px #aaa;
+  border-bottom: solid 3px #aaa;
   width:30%;
-  border-radius: 10px;
+  border-radius: 15px;
   float:right;
   margin:1%;
+}
+.donate-box img {
+  padding:9px;
+}
+.donate-box h1, .donate-box h2 {
+  font-family:proxima-nova-light;
+  font-size:16px;
+  text-align: left;
+  padding:10px;
 }
 .donate-box h1 {
   margin-top:10px;
   margin-bottom:10px;
-  font-family:proxima-nova-light;
-  text-align: left;
+  padding-bottom:0;
 }
 .donate-box h2 {
   margin-top:5px;
   margin-bottom:5px;
-  font-family:proxima-nova-light;
-  text-align: left;
+  padding-top:0;
 }
 .donate-box img {
   width: 20%;
   display:block;
   margin-left:40%;
 }
-.money {
-  font-family: proxima-nova-black;
-  font-size: 22px;
+.f-big {
+  font-size: 40px;
+}
+.f-mid2 {
+  font-size: 25px;
+}
+.f-mid {
+  font-size: 20px;
+}
+.f-norm {
+  font-size: 16px;
+}
+.f-small {
+  font-size:12px;
 }
 .green {
   color:#47b548;
 }
 .bold {
-  font-family: proxima-nova-black;
+  font-family: proxima-nova-bold;
 }
-.small {
-  font-size:10px;
-}
-.donations-feed h1, .why-goal-box h1, .why-charity-box h1 {
+.donations-feed h1, .data-box h1 {
   background-color: #ccc;
   font-family: proxima-nova-light;
+  font-size:20px;
   text-align:left;
   margin-top:0;
   padding-top:8px;
-  margin-bottom:5px;
+  margin-bottom:0;
+  padding-bottom:9px;
   padding-left:10px;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
+  border-top-left-radius:15px;
+  border-top-right-radius:15px;
 }
-.donations-feed p{
+.data-box p{
+  padding:20px;
+  text-align: left;
+}
+.donations-feed p {
   font-family: proxima-nova-light;
   text-align:left;
-  margin-top:5px;
-  margin-bottom:15px;
+  margin-top:0;
+  padding-top: 10px;
+  margin-bottom:10px;
   padding-left:10px;
   margin-left:10px;
   margin-right:10px;
-  border-bottom:1px solid #ccc;
+  border-top:1px solid #ccc;
+  position:relative;
+  top:-1px;
 }
 .social-bar {
   padding-top:5px;
@@ -106,4 +137,64 @@
   position: relative;
   background-color: #fff;
   top: -10px;
+}
+.prev-donations {
+  float:left;
+}
+.next-donations {
+  float:right;
+}
+.prev-donations, .next-donations {
+  cursor:pointer;
+  padding: 5px;
+  font-size:16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  position:relative;
+  top:-3px;
+}
+.pagination-links {
+  font-size:14px;
+  border-top:1px solid #888;
+  padding-top:9px;
+}
+.donate-btn {
+  font-family: proxima-nova-bold;
+  font-size: 25px;
+  color: #fff;
+  background-color: #47b548;
+  border-bottom: 3px solid #1c6d28;
+  border-radius: 10px;
+  line-height: 100px;
+  width: 84%;
+  margin-left: 8%;
+  display: block;
+}
+.donate-btn:hover {
+  text-decoration:none;
+  color:#fff;
+}
+.facebook-big-btn, .facebook-small-btn {
+  font-family: proxima-nova-bold;
+  background-color:#4c66a4;
+  color:#fff;
+  font-size:18px;
+  line-height:32px;
+  border-radius:10px;
+  border-bottom: 3px solid #334D8B;
+}
+.facebook-big-btn:hover, .facebook-small-btn:hover {
+  text-decoration:none;
+  color:#fff;
+}
+.facebook-big-btn {
+  width: 84%;
+  margin-left: 8%;
+  display: block;
+}
+.facebook-small-btn {
+  padding-top:6px;
+  padding-bottom:6px;
+  padding-left:16px;
+  padding-right:16px;
 }

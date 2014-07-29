@@ -1,6 +1,7 @@
 {
   "packages": {
     "iron-router": {},
-    "bootstrap-datepicker2": {}
+    "bootstrap-datepicker2": {},
+    "pagination": {}
   }
 }

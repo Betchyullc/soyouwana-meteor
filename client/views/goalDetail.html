@@ -6,7 +6,7 @@
       {{/if}}
 
       <h1>I will {{goal}} by {{deadline}}</h1>
-      <h3>&mdash; for &mdash;</h3>
+      <h2>&mdash; for &mdash;</h2>
       <h2>{{charity}}</h2>
     <div class="goalDetail-body">
       <div class="goal-media-container">
@@ -21,18 +21,17 @@
         {{/if}}
         <div class="social-bar">
           <span>X shares</span>
-          <span style="position: relative; top: 15px;">{{> facebook}}</span>
+          <span>{{> fbSmall}}</span>
           <span>{{> twitter}}</span>
-          <span class="twit"></span>
         </div>
       </div>
 
       <div class="donate-box">
-        <div class="owner-info">{{currentUser.profile.name}}</div>
-        <h1><span class="money">${{donatedAmount}}</span> raised</h1>
+        <div class="owner-info f-norm">{{currentUser.profile.name}}</div>
+        <h1><span class="bold f-big">${{donatedAmount}}</span> raised</h1>
         <h2>by <span class="bold">{{donatorCount}} people</span> in <span class="bold">{{timeLive}} days</span></h2>
-        <a href="/donate/{{_id}}" class="btn btn-large btn-success">Donate Now</a>
-        <div>{{> facebook}}</div>
+        <a href="/donate/{{_id}}" class="donate-btn">Donate Now</a>
+        <div style="padding-left:10px; padding-top:10px;">{{> facebook}}</div>
         <img src="http://i.imgur.com/SroaIc4.png">
       </div>
       
@@ -40,22 +39,34 @@
         <h1>{{donationCount}} Donations</h1>
         {{#each donation}}
           <p>
-            <div><span class="money green">${{amountF}}</span>
+            <div style="font-size:18px"><span class="bold f-mid2 green">${{amountF}}</span>
               {{#if name}}
                 {{name}}
               {{else}}
                 Anonymous
               {{/if}}
             </div>
-            <div class="small">at {{created_at}}</div>
-            <div style="margin-bottom:7px">{{msg}}</div>
+            <div class="f-small"><time class="timeago" datetime="{{formatCreatedAt}}">{{formatCreatedAt}}</time></div>
+            <div style="margin-bottom:7px;padding-top:9px;">{{msg}}</div>
           </p>
         {{else}}
           <p>No donations yet :(</p>
         {{/each}}
+
+        <div class="pagination-links">
+        {{#if previousDonations}}
+          <span class="prev-donations">&#8592;</span>
+        {{/if}}
+
+        {{{donationShowingText}}}
+
+        {{#if nextDonations}}
+          <span class="next-donations">&#8594;</span>
+        {{/if}}
+        </div>
       </div>
       
-      <div class="why-goal-box">
+      <div class="data-box">
         <h1>Why is this goal important to me?</h1>
         {{#if whyGoal}}
           <p>{{whyGoal}}</p>
@@ -64,13 +75,22 @@
         {{/if}}
       </div>
       
-      <div class="why-charity-box">
+      <div class="data-box">
         <h1>Why this Charity?</h1>
         {{#if whyCharity}}
           <p>{{whyCharity}}</p>
         {{else}}
           <p>Owner has not explained</p>
         {{/if}}
+      </div>
+
+      <div class="data-box">
+        <h1>{{commentCount}} Comments</h1>
+        {{#each comment}}
+          <p>{{msg}}</p>
+        {{else}}
+          <p>No comments</p>
+        {{/each}}
       </div>
     </div>
   </div>
