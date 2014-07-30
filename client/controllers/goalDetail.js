@@ -1,3 +1,9 @@
+var readablizeNumber = function(size) {
+  var sizePrefixes = ' KMBTQ';
+  if(size <= 0) return '0';
+  var t2 = Math.min(Math.round(Math.log(size)/Math.log(1000)), 5);
+  return parseInt(Math.round(size * 100 / Math.pow(1000, t2)) / 100) + sizePrefixes.charAt(t2).replace(' ', '');
+}
 Template.goalDetail.helpers({
   ownersGoal : function(){
     // `this` is the object representing the goal
@@ -38,6 +44,15 @@ Template.goalDetail.helpers({
   },
   nextDonations : function(){
     return (Session.get('skip') || 0)+10 < Donations.find({goalId: this._id}).count();
+  },
+  totalShares : function(){
+    HTTP.get("https://graph.facebook.com/fql?q=SELECT url, normalized_url, share_count, like_count, comment_count, total_count,commentsbox_count, comments_fbid, click_count FROM link_stat WHERE url='http://www.soyouwana.com/goal/"+this._id+"'", {}, function(err, res){
+      Session.set('fb-share-count', res.data.data[0].total_count);
+    });
+    Meteor.call('twitter_share_count','http://www.soyouwana.com/goal/'+this._id, function(err, res){
+      Session.set('twit-share-count', res.data.count);
+    });
+    return "<span id='share-count'>"+readablizeNumber((Session.get('fb-share-count') || 0) + (Session.get('twit-share-count') || 0))+"</span>";
   }
 });
 

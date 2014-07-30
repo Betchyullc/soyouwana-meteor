@@ -20,9 +20,9 @@
           {{/if}}
         {{/if}}
         <div class="social-bar">
-          <span>X shares</span>
-          <span>{{> fbSmall}}</span>
-          <span>{{> twitter}}</span>
+          <span style="width:33%; display:inline-block;">{{{totalShares}}} shares</span>
+          <span style="width:33%; display:inline-block;">{{> fbSmall}}</span>
+          <span style="width:32%; display:inline-block;">{{> twitter}}</span>
         </div>
       </div>
 
@@ -31,7 +31,7 @@
         <h1><span class="bold f-big">${{donatedAmount}}</span> raised</h1>
         <h2>by <span class="bold">{{donatorCount}} people</span> in <span class="bold">{{timeLive}} days</span></h2>
         <a href="/donate/{{_id}}" class="donate-btn">Donate Now</a>
-        <div style="padding-left:10px; padding-top:10px;">{{> facebook}}</div>
+        <div style="padding-top:10px;">{{> facebook}}</div>
         <img src="http://i.imgur.com/SroaIc4.png">
       </div>
       
@@ -65,6 +65,17 @@
         {{/if}}
         </div>
       </div>
+
+      {{#each updates}}
+      <div class="data-box">
+        <h1>Update <time class="timeago f-small" datetime="{{created_at}}">{{created_at}}</time></h1>
+        {{#if whyGoal}}
+          <p>{{whyGoal}}</p>
+        {{else}}
+          <p>Owner has not explained</p>
+        {{/if}}
+      </div>
+      {{/each}}
       
       <div class="data-box">
         <h1>Why is this goal important to me?</h1>
