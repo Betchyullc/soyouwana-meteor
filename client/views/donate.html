@@ -1,15 +1,14 @@
 <template name="donate">
   <div>
     <h1>I will donate</h1>
+    <p style="display:none" id="goal-id">{{_id}}</p>
     <input type='number' class="amount"/>
     <p>via</p>
-    Your Name: <input type='text' class="donate-name"/>
-    Your email: <input type='text' /><br>
-    Card Number: <input type='text' /><br>
-    CVV: <input type='text' /><br>
-    Expiration Date: <input type='text'/><br>
-    Zip code: <input type='text'/><br>
-    Personal Message: <input type='text' class="donate-msg"/><br>
-    <button>Continue</button>
+    <form>
+      Your Name: <input type='text' class="donate-name"/><br>
+      <div id="dropin">loading form...</div>
+      Personal Message: <input type='text' class="donate-msg"/><br>
+      <input type="submit" class="submit-btn" title="Continue">
+    </form>
   </div>
 </template>

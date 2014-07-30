@@ -2,3 +2,7 @@ iron-router
 blaze-layout
 bootstrap-datepicker2
 pagination
+npm
+iron-layout
+iron-core
+iron-dynamic-template
