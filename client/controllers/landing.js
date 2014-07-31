@@ -17,7 +17,8 @@ var next = function(e){
             goal: Session.get('goal'),
             deadline: Session.get('deadline'),
             owner: Meteor.userId(),
-            created_at: Date.now()
+            created_at: Date.now(),
+            updates: []
           });
           Session.set('goalId', goalId);
         } else {

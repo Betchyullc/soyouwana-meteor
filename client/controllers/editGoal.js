@@ -25,6 +25,29 @@ Template.editGoal.events({
       }
     });
 
+  },
+  'click #makeupdate': function(e){
+    var msg = $('#update-msg').val().trim();
+    if(msg == "") {
+      $('#update-msg').css('border-color','red');
+      setTimeout(function(){
+        $('#update-msg').attr('style','');
+      }, 444);
+      return;
+    }
+    Goals.update(this._id, {
+      $push : {
+        updates: {
+          msg: msg,
+          created_at: Date.now()
+        }
+      }
+    });
+    alert('Update posted!');
+    window.location.pathname = window.location.pathname.slice(0,-5);
+  },
+  'click .complete-goal-btn': function(e){
+    Meteor.call('winGoal', this._id);
   }/*,
   'click' : function(e){
     var item = $(e.currentTarget);

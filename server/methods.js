@@ -33,5 +33,27 @@ Meteor.methods({
       });
     }
     return clientToken;
+  },
+  winGoal : function(_id){
+    Goals.update(_id, {$set:{finished:true}});
+    _.each(Donations.find({goalId: _id}).fetch(), function(e, i, l){
+      if (e.submitted == true) return;
+      var result = Async.runSync(function(done){
+        gateway.transaction.sale({
+          customerId: e.customer,
+          amount: e.amount,
+          options: {
+            submitForSettlement: true
+          }
+        }, function(err,res){
+          done(err, res);
+        });
+      });
+      console.log(result);
+      if (result.result.success) {
+        Donations.update(e._id, { $set : { submitted: true }});
+        // call the api to pay the charity
+      }
+    });
   }
 });

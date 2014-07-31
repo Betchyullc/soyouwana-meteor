@@ -18,4 +18,13 @@
     <p>Photo URL: <input id="photoURL" type="text" value="{{photoURL}}"/></p>
     <p>Video Embed: <input id="videoEmbed" type="text" value="{{videoEmbed}}"/></p>
   </div>
+  <div class="make-update-body">
+    <input id="update-msg" type="text"/>
+    <button id="makeupdate">Update</button>
+  </div>
+  <div>
+    {{#unless finished}}
+      <button class="complete-goal-btn">I completed my goal!</button>
+    {{/unless}}
+  </div>
 </template>

@@ -1,14 +1,17 @@
 <template name="donate">
-  <div>
+  <div class="container">
     <h1>I will donate</h1>
-    <p style="display:none" id="goal-id">{{_id}}</p>
-    <input type='number' class="amount"/>
-    <p>via</p>
-    <form>
-      Your Name: <input type='text' class="donate-name"/><br>
-      <div id="dropin">loading form...</div>
-      Personal Message: <input type='text' class="donate-msg"/><br>
-      <input type="submit" class="submit-btn" title="Continue">
-    </form>
+    <div class="donate-pay-box">
+      <p style="display:none" id="goal-id">{{_id}}</p>
+      $<input type='number' class="amount" min="5"/>
+      <p>as</p>
+      <form>
+        Your Name: <input type='text' class="donate-name"/><br>
+        <p>via</p>
+        <div id="dropin">loading form...</div>
+        Personal Message: <input type='text' class="donate-msg"/><br>
+        <input type="submit" class="submit-btn" title="Continue">
+      </form>
+    </div>
   </div>
 </template>

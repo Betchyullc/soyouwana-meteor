@@ -32,7 +32,9 @@ Template.goalDetail.helpers({
   amountF : function(){
     return parseFloat(this.amount).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3);
   },
-  formatCreatedAt : function(){
+  formatCreatedAt : function(c_a){
+    if (c_a) return (new Date(c_a)).toISOString();
+
     return (new Date(this.created_at)).toISOString();
   },
   donationShowingText : function(){
@@ -53,6 +55,11 @@ Template.goalDetail.helpers({
       Session.set('twit-share-count', res.data.count);
     });
     return "<span id='share-count'>"+readablizeNumber((Session.get('fb-share-count') || 0) + (Session.get('twit-share-count') || 0))+"</span>";
+  },
+  sortedUpdates : function(){
+    return _.sortBy(this.updates, function(obj){
+      return -1*obj.created_at;
+    });
   }
 });
 
