@@ -1,9 +1,22 @@
 var isBad = function(val){
-  return val == "";
+  if(val == "") return true;
+  if (Session.get('goal')) {
+    if (Session.get('deadline')){
+    } else {
+      var parts = val.split('/');
+      return new Date() > new Date(parts[2], parts[0]-1, parts[1]);
+    } 
+  } else {
+  }
+  return false;
 };
 var next = function(e){
   var val = $('.goal-bar input').val().trim();
   if (isBad(val)){
+    $('.goal-bar input').css('border-color','red');
+    setTimeout(function(){
+      $('.goal-bar input').attr('style','');
+    }, 666);
     return;
   }
   if (Session.get('charity') == undefined) {

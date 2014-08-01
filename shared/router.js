@@ -10,7 +10,8 @@ Router.onBeforeAction(function(){
   Session.set('goalId', undefined);
 });
 var accessBeforeAction = function(pause){
-  if (!Meteor.user()) {
+  var goal = Goals.findOne(this.params._id);
+  if (!Meteor.user() || goal == undefined || Meteor.userId() != goal.owner) {
     // render the login template but keep the url in the browser the same
     this.render('notFound');
 
@@ -32,7 +33,7 @@ Router.map(function(){
   this.route('editGoal', {
     path: '/goal/:_id/edit',
     onBeforeAction: accessBeforeAction,
-    waitOn: function() { return Meteor.subscribe('goal', this.params._id);},
+    waitOn: function() { return Meteor.subscribe('goalAndDonations', this.params._id);},
     data: function() { return Goals.findOne(this.params._id); }
   });
   this.route('donate', {

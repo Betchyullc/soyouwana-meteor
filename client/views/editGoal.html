@@ -1,7 +1,17 @@
 <template name="editGoal">
+  <h1 class="edit-header">I will {{goal}}</h1>
+  <div class="social-heading-bar">
+    <span class="bold">Share your page!</span>
+    {{> fbSmall}}
+    {{> twitter}}
+    <a href="#"><img src="email.png"/>Email</a>
+    <a href="/goal/{{_id}}" style="float:right;">
+      <img src="mouse.png"/>http://www.soyouwana.com/goal/{{_id}}
+    </a>
+  </div>
   <div class="edit-goal-body">
     <h1>
-      Customize your Goal
+      You Have Raised <span class="green bold">${{amountRaised}}</span>
     </h1>
     <button id="savechanges">Save</button>
     {{#if userHasName}}

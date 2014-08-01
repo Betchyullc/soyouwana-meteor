@@ -4,6 +4,14 @@ Template.editGoal.helpers({
   },
   name : function(){
     return Meteor.user().profile.name;
+  },
+  amountRaised : function(){
+    var amt = 0;
+    var dons = Donations.find({goalId: this._id}).fetch();
+    for( var i = 0; i < dons.length; i++){
+      amt += parseInt(dons[i].amount);
+    }
+    return parseFloat(amt).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3);
   }
 });
 Template.editGoal.events({

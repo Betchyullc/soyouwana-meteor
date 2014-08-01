@@ -1,6 +1,35 @@
+.edit-header {
+  width:100%;
+  background-color: #e4e4e4;
+  padding: 15px;
+  font-family:proxima-nova-bold;
+  font-size:22px;
+  text-align: center;
+}
+.social-heading-bar {
+  width:80%;
+  margin-left:10%;
+  margin-bottom:10px;
+}
+.social-heading-bar a {
+  color: #111;
+  font-family: proxima-nova-thin;
+  text-decoration:none;
+}
 .edit-goal-body {
   font-family: proxima-nova-light;
   text-align:center;
+  width:80%;
+  margin-left:10%;
+  border-radius:15px;
+  border:1px solid #aeaeae;
+}
+.edit-goal-body h1 {
+  padding:20px;
+  margin-left:20%;
+  text-align:left;
+  font-size: 40px;
+  font-family:proxima-nova-light;
 }
 .edit-goal-body input {
   border:none;
