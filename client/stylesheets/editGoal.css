@@ -26,10 +26,12 @@
 }
 .edit-goal-body h1 {
   padding:20px;
-  margin-left:20%;
+  padding-left:20%;
   text-align:left;
   font-size: 40px;
   font-family:proxima-nova-light;
+  color: #454545;
+  border-bottom:1px solid #aeaeae;
 }
 .edit-goal-body input {
   border:none;
