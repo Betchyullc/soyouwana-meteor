@@ -26,13 +26,19 @@
   padding:10px;
   border-bottom: solid 5px #aaa;
 }
-.goal-media-container, .data-box {
+.goal-left-col {
   width:65%;
+  float:left;
+}
+.goal-right-col {
+  width:30%;
+  float:right;
+}
+.goal-media-container, .data-box {
   margin-left:1%;
   margin-right:1%;
   margin-top:10px;
   margin-bottom:10px;
-  float:left;
   border-radius: 15px;
   border: 1px solid #aaa;
   border-bottom: solid 3px #aaa;
@@ -49,10 +55,11 @@
 .donate-box, .donations-feed {
   border: solid 1px #aaa;
   border-bottom: solid 3px #aaa;
-  width:30%;
+  width:100%;
   border-radius: 15px;
   float:right;
   margin:1%;
+  margin-top:10px;
 }
 .donate-box img {
   padding:9px;

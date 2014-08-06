@@ -23,8 +23,9 @@
   margin-left:10%;
   border-radius:15px;
   border:1px solid #aeaeae;
+  border-bottom:5px solid #aeaeae;
 }
-.edit-goal-body h1 {
+.make-update-body, .edit-goal-body h1 {
   padding:20px;
   padding-left:20%;
   text-align:left;
@@ -41,4 +42,122 @@
 .edit-goal-body textarea {
   width: 100%;
   height: 100px;
+}
+.post-update-box {
+  border: 1px solid #aeaeae;
+  border-radius:15px;
+  padding:20px;
+  width:90%;
+}
+.post-update-box button {
+  background-color:#47b548;
+  color:white;
+  border-radius: 5px;
+  border:none;
+  border-bottom: 3px solid #1c6d28;
+  padding:5px;
+}
+.post-update-box button img {
+  position:relative;
+  top:3px;
+}
+.update-bottom-row-left {
+  display:inline-block;
+  width:50%;
+
+  font-size:16px;
+}
+.update-bottom-row-right {
+  display:inline-block;
+  float:right;
+}
+.camera-icon {
+  width:25px;
+  position:relative;
+  top:4px;
+}
+.social-btn {
+  width:35px;
+  position:relative;
+  top:7px;
+}
+#update-msg {
+  border:1px solid #454545;
+  border-radius: 10px;
+  text-align:left;
+  width:98%;
+}
+.big-pic {
+  position: absolute;
+  left: 13.5%;
+  width: 120px;
+  border-radius: 50%;
+}
+.l-col {
+  width:20%;
+  display:inline-block;
+  line-height:40px;
+  text-align:right;
+}
+.r-col {
+  width:75%;
+  display:inline-block;
+  text-align:left;
+  padding-left:10px;
+}
+.l-justify {
+  text-align:left;
+}
+#username, #goal, #deadline, #photoURL, #videoEmbed, #whyGoal, #whyCharity {
+  border:1px solid black;
+  border-radius:0;
+  width:90%;
+  text-align:left;
+}
+#photoURL, #videoEmbed {
+  width:40%;
+}
+#whyGoal, #whyCharity {
+  font-size:16px;
+  height:80px;
+}
+.complete-goal-btn {
+  font-family: proxima-nova-light;
+  font-size: 25px;
+  color: #fff;
+  background-color: #47b548;
+  border-bottom: 3px solid #1c6d28;
+  border-radius: 10px;
+  line-height: 50px;
+  width: 84%;
+  display: block;
+  text-align:center;
+  margin-top:10px;
+}
+.complete-goal-btn:hover {
+  text-decoration:none;
+  color:#fff;
+}
+.complete-goal-btn:active {
+  position:relative;
+  top:3px;
+  background-color:#1c6d28;
+  border-bottom: none;
+}
+#savechanges {
+  font-family: proxima-nova-bold;
+  font-size: 25px;
+  color: #fff;
+  background-color: #47b548;
+  border:none;
+  border-bottom: 3px solid #1c6d28;
+  border-radius: 10px;
+  line-height: 45px;
+  display: block;
+  text-align:center;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:21%;
+  padding-left: 25px;
+  padding-right: 25px;
 }

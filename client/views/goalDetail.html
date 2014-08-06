@@ -9,100 +9,105 @@
       <h2>&mdash; for &mdash;</h2>
       <h2>{{charity}}</h2>
     <div class="goalDetail-body">
-      <div class="goal-media-container">
-        {{#if videoEmbed}}
-          {{{videoEmbed}}}
-        {{else}}
-          {{#if photoURL}}
-            <img src="{{photoURL}}"/>
+      <div class="goal-left-col">
+        <div class="goal-media-container">
+          {{#if videoEmbed}}
+            {{{videoEmbed}}}
           {{else}}
-            <img src="/bg.jpg"/>
+            {{#if photoURL}}
+              <img src="{{photoURL}}"/>
+            {{else}}
+              <img src="/bg.jpg"/>
+            {{/if}}
           {{/if}}
-        {{/if}}
-        <div class="social-bar">
-          <span style="width:33%; display:inline-block;">{{{totalShares}}} shares</span>
-          <span style="width:33%; display:inline-block;">{{> fbSmall}}</span>
-          <span style="width:32%; display:inline-block;">{{> twitter}}</span>
+          <div class="social-bar">
+            <span style="width:33%; display:inline-block;">{{{totalShares}}} shares</span>
+            <span style="width:33%; display:inline-block;">{{> fbSmall}}</span>
+            <span style="width:32%; display:inline-block;">{{> twitter}}</span>
+          </div>
         </div>
-      </div>
 
-      <div class="donate-box">
-        <div class="owner-info f-norm">{{currentUser.profile.name}}</div>
-        <h1><span class="bold f-big">${{donatedAmount}}</span> raised</h1>
-        <h2>by <span class="bold">{{donatorCount}} people</span> in <span class="bold">{{timeLive}} days</span></h2>
-        {{#unless finished}}
-          <a href="/donate/{{_id}}" class="donate-btn">Donate Now</a>
-        {{else}}
-          Goal complete--Donations closed
-        {{/unless}}
-        <div style="padding-top:10px;">{{> facebook}}</div>
-        <img src="http://i.imgur.com/SroaIc4.png">
-      </div>
-      
-      <div class="donations-feed">
-        <h1>{{donationCount}} Donations</h1>
-        {{#each donation}}
-          <p>
-            <div style="font-size:18px"><span class="bold f-mid2 green">${{amountF}}</span>
-              {{#if name}}
-                {{name}}
-              {{else}}
-                Anonymous
-              {{/if}}
-            </div>
-            <div class="f-small"><time class="timeago" datetime="{{formatCreatedAt}}">{{formatCreatedAt}}</time></div>
-            <div style="margin-bottom:7px;padding-top:9px;">{{msg}}</div>
-          </p>
-        {{else}}
-          <p>No donations yet :(</p>
-        {{/each}}
-
-        <div class="pagination-links">
-        {{#if previousDonations}}
-          <span class="prev-donations">&#8592;</span>
-        {{/if}}
-
-        {{{donationShowingText}}}
-
-        {{#if nextDonations}}
-          <span class="next-donations">&#8594;</span>
-        {{/if}}
-        </div>
-      </div>
-
-      {{#each sortedUpdates}}
-      <div class="data-box">
-        <h1>Update <time class="timeago f-small" datetime="{{formatCreatedAt created_at}}">{{created_at}}</time></h1>
-        <p>{{msg}}</p>
-      </div>
-      {{/each}}
-      
-      <div class="data-box">
-        <h1>Why is this goal important to me?</h1>
-        {{#if whyGoal}}
-          <p>{{whyGoal}}</p>
-        {{else}}
-          <p>Owner has not explained</p>
-        {{/if}}
-      </div>
-      
-      <div class="data-box">
-        <h1>Why this Charity?</h1>
-        {{#if whyCharity}}
-          <p>{{whyCharity}}</p>
-        {{else}}
-          <p>Owner has not explained</p>
-        {{/if}}
-      </div>
-
-      <div class="data-box">
-        <h1>{{commentCount}} Comments</h1>
-        {{#each comment}}
+        {{#each sortedUpdates}}
+        <div class="data-box">
+          <h1>Update <time class="timeago f-small" datetime="{{formatCreatedAt created_at}}">{{created_at}}</time></h1>
           <p>{{msg}}</p>
-        {{else}}
-          <p>No comments</p>
+        </div>
         {{/each}}
+        
+        <div class="data-box">
+          <h1>Why is this goal important to me?</h1>
+          {{#if whyGoal}}
+            <p>{{whyGoal}}</p>
+          {{else}}
+            <p>Owner has not explained</p>
+          {{/if}}
+        </div>
+        
+        <div class="data-box">
+          <h1>Why this Charity?</h1>
+          {{#if whyCharity}}
+            <p>{{whyCharity}}</p>
+          {{else}}
+            <p>Owner has not explained</p>
+          {{/if}}
+        </div>
+
+        <div class="data-box">
+          <h1>{{commentCount}} Comments</h1>
+          {{#each comment}}
+            <p>{{msg}}</p>
+          {{else}}
+            <p>No comments</p>
+          {{/each}}
+        </div>
       </div>
+      
+      <div class="goal-right-col">
+        <div class="donate-box">
+          <div class="owner-info f-norm">{{currentUser.profile.name}}</div>
+          <h1><span class="bold f-big">${{donatedAmount}}</span> raised</h1>
+          <h2>by <span class="bold">{{donatorCount}} people</span> in <span class="bold">{{timeLive}} days</span></h2>
+          {{#unless finished}}
+            <a href="/donate/{{_id}}" class="donate-btn">Donate Now</a>
+          {{else}}
+            Goal complete--Donations closed
+          {{/unless}}
+          <div style="padding-top:10px;">{{> facebook}}</div>
+          <img src="http://i.imgur.com/SroaIc4.png">
+        </div>
+        
+        <div class="donations-feed">
+          <h1>{{donationCount}} Donations</h1>
+          {{#each donation}}
+            <p>
+              <div style="font-size:18px"><span class="bold f-mid2 green">${{amountF}}</span>
+                {{#if name}}
+                  {{name}}
+                {{else}}
+                  Anonymous
+                {{/if}}
+              </div>
+              <div class="f-small"><time class="timeago" datetime="{{formatCreatedAt}}">{{formatCreatedAt}}</time></div>
+              <div style="margin-bottom:7px;padding-top:9px;">{{msg}}</div>
+            </p>
+          {{else}}
+            <p>No donations yet :(</p>
+          {{/each}}
+
+          <div class="pagination-links">
+          {{#if previousDonations}}
+            <span class="prev-donations">&#8592;</span>
+          {{/if}}
+
+          {{{donationShowingText}}}
+
+          {{#if nextDonations}}
+            <span class="next-donations">&#8594;</span>
+          {{/if}}
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>

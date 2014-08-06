@@ -25,14 +25,14 @@ Template.editGoal.events({
       $set : {
         goal: $('input#goal').val().trim(),
         deadline: $('input#deadline').val().trim(),
-        charity: $('input#charity').val().trim(),
+//        charity: $('input#charity').val().trim(),
         whyGoal: $('textarea#whyGoal').val().trim(),
         whyCharity: $('textarea#whyCharity').val().trim(),
         photoURL: $('input#photoURL').val().trim(),
         videoEmbed: $('input#videoEmbed').val().trim()
       }
     });
-
+    alert("Changes Saved");
   },
   'click #makeupdate': function(e){
     var msg = $('#update-msg').val().trim();

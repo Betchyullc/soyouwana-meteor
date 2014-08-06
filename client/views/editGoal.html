@@ -4,38 +4,79 @@
     <span class="bold">Share your page!</span>
     {{> fbSmall}}
     {{> twitter}}
-    <a href="#"><img src="email.png"/>Email</a>
+    <a href="#"><img src="/email.png" style="width:30px"/> Email</a>
     <a href="/goal/{{_id}}" style="float:right;">
-      <img src="mouse.png"/>http://www.soyouwana.com/goal/{{_id}}
+      <img src="/mouse.png" style="width:30px"/> http://www.soyouwana.com/goal/{{_id}}
     </a>
   </div>
   <div class="edit-goal-body">
     <h1>
+      <img class="big-pic" src="{{currentUser.profile.picture}}"/>
       You Have Raised <span class="green bold">${{amountRaised}}</span>
       <div class="f-mid">for <span class="bold">{{charity}}</span></div>
+      {{#unless finished}}
+        <a href="#" class="complete-goal-btn">I completed my goal!</a>
+      {{/unless}}
     </h1>
+    <div class="make-update-body">
+      <img class="big-pic" src="{{currentUser.profile.picture}}"/>
+      <span class="bold f-mid2">Post an Update</span>
+      <div class="post-update-box">
+        <textarea id="update-msg" type="text" placeholder="Keep your supporters in the loop with frequent updates"></textarea>
+        <div class="update-bottom-row">
+          <div class="update-bottom-row-left">
+            <a href="#"><img src="/camera.png" class="camera-icon"/> PHOTO</a>
+            <a href="#"><img src="/video.png" class="camera-icon"/> VIDEO</a>
+          </div>
+          <div class="update-bottom-row-right">
+            <a href="#"><img src="/f-button.png" class="social-btn"/></a>
+            <a href="#"><img src="/bird-button.png" class="social-btn"/></a>
+            <button id="makeupdate">Post <img width="14" src="/arrow-icon.png"/></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="l-col">
+      <br>
+      <p class="bold">Your Name</p>
+      <p class="bold">Your Goal</p>
+      <p class="bold">Deadline</p>
+      <p class="bold">Photo/Video</p>
+      <br>
+      <br>
+      <p class="bold">Why is this goal</p>
+      <p class="bold">important to me?</p>
+      <br>
+      <p class="bold">Why this charity?</p>
+    </div>
+    <div class="r-col">
+      <h2 class="bold">Customize Your Page</h2>
+      {{#if userHasName}}
+        <p><input id="username" type="text" value="{{name}}"/></p>
+      {{else}}
+        <p><input id="username" type="text" placeholder="So your friends will recognize you"/></p>
+      {{/if}}
+      <p><input id="goal" type="text" value="{{goal}}"/></p>
+      <p><input id="deadline" type="text" value="{{deadline}}" placeholder="MM/DD/YYYY"/></p>
+        {{#if videoEmbed}}
+          {{{videoEmbed}}}
+        {{else}}
+          {{#if photoURL}}
+            <img style="height:110px; float:right; margin-right:8%;" src="{{photoURL}}"/>
+          {{else}}
+            <img src="/bg.jpg" style="height:110px; float:right; margin-right:8%;"/>
+          {{/if}}
+        {{/if}}
+      <p class="bold l-justify">Photo URL</p>
+      <p class="l-justify"><input id="photoURL" type="text" value="{{photoURL}}"/></p>
+      <p class="bold l-justify">Video Embed</p>
+      <p class="l-justify"><input id="videoEmbed" type="text" value="{{videoEmbed}}"/></p>
+      <p><textarea id="whyGoal" placeholder="Inspirational Context">{{whyGoal}}</textarea></p>
+      <p><textarea id="whyCharity" placeholder="Moving Story">{{whyCharity}}</textarea></p>
+    </div>
     <button id="savechanges">Save</button>
-    {{#if userHasName}}
-      <p>Your name: <input id="username" type="text" value="{{name}}"/></p>
-    {{else}}
-      <p>Your name: <input id="username" type="text" placeholder="So your friends will recognize you"/></p>
-    {{/if}}
-    <p>Your Goal: <input id="goal" type="text" value="{{goal}}"/></p>
-    <p>The Deadline: <input id="deadline" type="text" value="{{deadline}}" placeholder="MM/DD/YYYY"/></p>
-    <p>Your Charity: <input id="charity" type="text" value="{{charity}}"/></p>
-    <a href="/goal/{{_id}}">View Goal</a>
-    <p>Why I want to accomplish this: <textarea id="whyGoal">{{whyGoal}}</textarea></p>
-    <p>Why I picked this charity: <textarea id="whyCharity">{{whyCharity}}</textarea></p>
-    <p>Photo URL: <input id="photoURL" type="text" value="{{photoURL}}"/></p>
-    <p>Video Embed: <input id="videoEmbed" type="text" value="{{videoEmbed}}"/></p>
-  </div>
-  <div class="make-update-body">
-    <input id="update-msg" type="text"/>
-    <button id="makeupdate">Update</button>
   </div>
   <div>
-    {{#unless finished}}
-      <button class="complete-goal-btn">I completed my goal!</button>
-    {{/unless}}
+    <a href="/goal/{{_id}}">View Goal</a>
   </div>
 </template>
