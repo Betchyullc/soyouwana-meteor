@@ -190,59 +190,6 @@
   background-color:#1c6d28;
   border-bottom: none;
 }
-.facebook-big-btn, .facebook-small-btn {
-  font-family: proxima-nova-bold;
-  background-color:#4c66a4;
-  color:#fff;
-  font-size:18px;
-  line-height:32px;
-  border-radius:10px;
-  border-bottom: 3px solid #334D8B;
-}
-.facebook-big-btn:hover, .facebook-small-btn:hover {
-  text-decoration:none;
-  color:#fff;
-}
-.facebook-big-btn:active, .facebook-small-btn:active {
-  position:relative;
-  top:3px;
-  background-color:#334D8B;
-  border-bottom: none;
-}
-.facebook-big-btn {
-  width: 84%;
-  margin-left: 8%;
-  display: block;
-}
-.facebook-small-btn {
-  padding-top:6px;
-  padding-bottom:6px;
-  padding-left:16px;
-  padding-right:16px;
-}
-.twitter-btn {
-  font-family: proxima-nova-bold;
-  background-color:#3cf;
-  color:#fff;
-  font-size:18px;
-  line-height:32px;
-  border-radius:10px;
-  border-bottom: 3px solid #1AB3E6;
-  padding-top:6px;
-  padding-bottom:6px;
-  padding-left:16px;
-  padding-right:16px;
-}
-.twitter-btn:hover {
-  text-decoration:none;
-  color:#fff;
-}
-.twitter-btn:active {
-  position:relative;
-  top:3px;
-  background-color:#1AB3E6;
-  border-bottom: none;
-}
 #share-count {
   color:#087cb1;
   font-size:45px;

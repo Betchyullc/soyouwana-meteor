@@ -5,15 +5,21 @@
     {{> fbSmall}}
     {{> twitter}}
     <a href="#"><img src="/email.png" style="width:30px"/> Email</a>
-    <a href="/goal/{{_id}}" style="float:right;">
-      <img src="/mouse.png" style="width:30px"/> http://www.soyouwana.com/goal/{{_id}}
+    <a id="share-link" href="#" style="float:right;">
+      <img src="/mouse.png" style="width:30px"/> Share Link
+      <div id="view-link" style="display:none">
+        http://www.doyouwana.com/goal/{{_id}}
+      </div>
     </a>
   </div>
   <div class="edit-goal-body">
     <h1>
       <img class="big-pic" src="{{currentUser.profile.picture}}"/>
       You Have Raised <span class="green bold">${{amountRaised}}</span>
-      <div class="f-mid">for <span class="bold">{{charity}}</span></div>
+      <div class="f-mid">
+        for <span class="bold">{{charity}}</span>
+        <a href="/goal/{{_id}}">View Goal</a>
+      </div>
       {{#unless finished}}
         <a href="#" class="complete-goal-btn">I completed my goal!</a>
       {{/unless}}
@@ -75,8 +81,5 @@
       <p><textarea id="whyCharity" placeholder="Moving Story">{{whyCharity}}</textarea></p>
     </div>
     <button id="savechanges">Save</button>
-  </div>
-  <div>
-    <a href="/goal/{{_id}}">View Goal</a>
   </div>
 </template>

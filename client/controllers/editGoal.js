@@ -1,3 +1,19 @@
+var selectText = function(element) {
+  var doc = document;
+  var text = doc.getElementById(element);    
+
+  if (doc.body.createTextRange) { // ms
+    var range = doc.body.createTextRange();
+    range.moveToElementText(text);
+    range.select();
+  } else if (window.getSelection) { // moz, opera, webkit
+    var selection = window.getSelection();            
+    var range = doc.createRange();
+    range.selectNodeContents(text);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  }
+};
 Template.editGoal.helpers({
   userHasName : function(){
     return Meteor.user() && Meteor.user().profile && Meteor.user().profile.name;
@@ -56,17 +72,17 @@ Template.editGoal.events({
   },
   'click .complete-goal-btn': function(e){
     Meteor.call('winGoal', this._id);
-  }/*,
-  'click' : function(e){
-    var item = $(e.currentTarget);
-    var name = e.currentTarget.nodeName;
-    if(item.hasClass("editing")){
-      name = item.attr("data-return");
-      item.replaceWith("<"+name+">"+item.val().trim()+"</"+name+">");
+  },
+  'click #share-link': function(e){
+    if(Session.get('link-shown')){
+      Session.set('link-shown', undefined);
+      $('#view-link').hide();
     } else {
-      item.replaceWith("<input class='editing' type='text' value='"+item.text().trim()+"' data-return='"+name+"'/>");
+      Session.set('link-shown', true);
+      $('#view-link').show();
+      selectText('view-link');
     }
-  }*/
+  }
 });
 
 Template.editGoal.rendered = function(){
