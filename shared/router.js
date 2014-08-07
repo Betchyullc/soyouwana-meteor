@@ -38,6 +38,7 @@ Router.map(function(){
   });
   this.route('donate', {
     path: '/donate/:_id',
+    waitOn: function() { return Meteor.subscribe('goals', this.params._id);},
     data: function() { return this.params; }
   });
 });

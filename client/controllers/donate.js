@@ -1,3 +1,26 @@
+Template.donate.helpers({
+  goal : function(){
+    var g = Goals.findOne(this._id);
+    if (g) {
+      return g.goal;
+    }
+    return "";
+  },
+  deadline : function(){
+    var g = Goals.findOne(this._id);
+    if (g) {
+      return g.deadline;
+    }
+    return "";
+  },
+  charity : function(){
+    var g = Goals.findOne(this._id);
+    if (g) {
+      return g.charity;
+    }
+    return "";
+  }
+});
 Template.donate.events({
   'click .submit-btn': function(e){
     var amt = $('.amount').val();
@@ -15,15 +38,15 @@ Template.donate.rendered = function(){
     braintree.setup(res.result, 'dropin', {
       container: 'dropin',
       paymentMethodNonceReceived: function (event, nonce) {
-        var name = $('.donate-name').val().trim();
+        var name = $('#donate-name').val().trim();
         Meteor.call('donate', nonce, name, function(err,res){
           console.log(err);
           console.log(res);
           Donations.insert({
-            amount: $('.amount').val(),
+            amount: $('#amount').val(),
             goalId: $('#goal-id').text(),
             name: name,
-            msg: $('.donate-msg').val().trim(),
+            msg: $('#donate-msg').val().trim(),
             created_at: Date.now(),
             submitted: false,
             customer: res.result.customer.id
