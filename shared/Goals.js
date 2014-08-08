@@ -3,7 +3,7 @@ if (Meteor.isServer) {
   Meteor.publish("goalAndDonations", function(id){
     return [
       Goals.find({_id: id}),
-      Donations.find({goalId: id})
+      Donations.find({goalId: id}, {fields: {customer: 0}})
     ];
   });
   Meteor.publish("goal", function(id){

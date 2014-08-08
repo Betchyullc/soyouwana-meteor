@@ -38,7 +38,7 @@ Template.donate.rendered = function(){
     braintree.setup(res.result, 'dropin', {
       container: 'dropin',
       paymentMethodNonceReceived: function (event, nonce) {
-        var name = $('#donate-name').val().trim();
+        var name = $('#donate-name').val().trim() || "Anonymous";
         Meteor.call('donate', nonce, name, function(err,res){
           console.log(err);
           console.log(res);

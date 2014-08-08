@@ -1,10 +1,10 @@
 Donations = new Meteor.Collection("donations");
 if (Meteor.isServer) {
   Meteor.publish("donation", function(id){
-    return Donations.find({_id: id});
+    return Donations.find({_id: id}, {fields: {customer: 0}});
   });
   Meteor.publish("donationsForGoal", function(goalId){
-    return Donations.find({goalId: goalId});
+    return Donations.find({goalId: goalId}, {fields: {customer: 0}});
   });
 
   Donations.allow({
@@ -12,7 +12,7 @@ if (Meteor.isServer) {
       //existence
       return doc.amount && doc.created_at 
              && doc.customer && doc.goalId
-             && doc.msg && doc.name 
+             && doc.name 
              ;
     },
     update: function (userId, doc, fields, modifier) {

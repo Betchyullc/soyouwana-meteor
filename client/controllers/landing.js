@@ -70,6 +70,7 @@ Template.landing.helpers({
 Template.landing.events({
   'click button' : next,
   'click .back-btn': function(){
+    Session.set('going back', true);
     if (Session.get('deadline')){
       Session.set('deadline', undefined);
     } else {
@@ -83,9 +84,14 @@ Template.landing.events({
 });
 
 Template.yourGoal.rendered = function(){
-  $('.box').css("left", '101%');
-  $('.box').animate({left:'33%'}, 600);
-//  $('input').focus();
+  if(Session.get('going back')){
+    Session.set('going back', false);
+    $('.box').css("left", '-33%');
+    $('.box').animate({left:'33%'}, 600);
+  } else {
+    $('.box').css("left", '101%');
+    $('.box').animate({left:'33%'}, 600);
+  }
 };
 Template.deadline.rendered = function(){
   Template.yourGoal.rendered();
