@@ -65,6 +65,7 @@ html,body{
 }
 .goal-bar input#deadline{
   padding-left:39px;
+  width:70%;
 }
 .goal-bar input:focus{
   border:1px solid black;

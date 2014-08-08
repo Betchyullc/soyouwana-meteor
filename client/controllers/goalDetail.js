@@ -60,6 +60,13 @@ Template.goalDetail.helpers({
     return _.sortBy(this.updates, function(obj){
       return -1*obj.created_at;
     });
+  },
+  ownerName : function(){
+    var usr = Meteor.users.findOne(this.owner);
+    if (usr)
+      return usr.profile.name;
+    else
+      return "";
   }
 });
 
