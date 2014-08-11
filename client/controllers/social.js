@@ -1,5 +1,9 @@
 Template.facebook.loc = function(){
-  return window.location.href;
+  if (window.location.href.match(/\/edit/i) != null){
+    return window.location.href.slice(0,-5);
+  } else {
+    return window.location.href;
+  }
 };
 Template.twitter.loc = Template.facebook.loc;
 Template.fbSmall.loc = Template.facebook.loc;

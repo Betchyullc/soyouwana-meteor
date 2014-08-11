@@ -15,7 +15,7 @@
   color: #111;
   font-family: proxima-nova-thin;
   text-decoration:none;
-  margin-left:40px;
+  margin-left:12%;
 }
 .edit-goal-body {
   font-family: proxima-nova-light;
@@ -176,4 +176,13 @@
   border: 1px solid #454545;
   background-color:white;
   padding:4px;
+}
+@media (max-width: 800px){
+  .social-heading-bar a {
+    margin-left:4%;
+  }
+  .big-pic {
+    width:87px;
+  }
+
 }

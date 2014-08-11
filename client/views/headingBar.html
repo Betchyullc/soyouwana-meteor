@@ -1,9 +1,9 @@
 <template name="headingBar">
   <div class="top-bar">
     <a href="{{pathFor 'landing'}}" class="logo"><img src="http://i.imgur.com/SroaIc4.png"/></a>
-    <div class="v-cntr-outer2">
-      <input type="text" id="search" placeholder="Find a Goal" class="v-cntr-inner2"/>
-      <a href="{{pathFor 'findGoal'}}"><img src="/search-icon.png" class="search-icon v-cntr-inner2"/></a>
+    <div class="search-container">
+      <input type="text" id="search" placeholder="Find a Goal" class=""/>
+      <a href="{{pathFor 'findGoal'}}" class="search-icon"><img src="/search-icon.png"/></a>
     </div>
     <div class="login-link">
     {{#unless sessionGet 'goalId'}}

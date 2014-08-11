@@ -49,7 +49,8 @@ Template.donate.rendered = function(){
             msg: $('#donate-msg').val().trim(),
             created_at: Date.now(),
             submitted: false,
-            customer: res.result.customer.id
+            customer: res.result.customer.id,
+            email: $('#email').val().trim()
           }, function(err, id){
             alert('Your donation has been processed. You will be charged only if the goal owner indicates that they completed the goal.');
             window.location.pathname = '/goal/' + $('#goal-id').text();

@@ -5,11 +5,47 @@
   text-align:center;
 }
 .logo {
-  height:100%;
-  float:left;
+  height:60px;
+  position:absolute;
+  top:0;
+  left:0;
 }
 .logo img {
   height:100%;
+}
+.search-container {
+  margin: 0 auto;
+  width:200px;
+  padding-top:16px;
+}
+#search {
+  border-radius:0;
+  border:none;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  font-family: proxima-nova-light;
+}
+#search::-webkit-input-placeholder {
+  color: white;
+}
+#search:-moz-placeholder { /* Firefox 18- */
+  color: white;  
+}
+#search::-moz-placeholder {  /* Firefox 19+ */
+  color: white;  
+}
+#search:-ms-input-placeholder {  
+  color: white;  
+}
+.search-icon {
+  width: 22px;
+  float: right;
+  position: relative;
+  top: -35px;
+  right: -10px;
+}
+.search-icon img{
+  width:22px;
 }
 .v-cntr-outer2, .v-cntr-outer {
   height:100%;
@@ -35,7 +71,9 @@
   transform: translateY(-50%);
 }
 .login-link {
-  float:right;
+  position:absolute;
+  top:0;
+  right:0;
   margin-right:20px;
   font-size: 26px;
   line-height:60px;
@@ -46,27 +84,4 @@
 }
 a.login-close-text {
   color:black;
-}
-#search {
-  border-radius:0;
-  border:none;
-  background-color: rgba(255,255,255,0.2);
-  color: #fff;
-  font-family: proxima-nova-light;
-}
-#search::-webkit-input-placeholder {
-  color: white;
-}
-#search:-moz-placeholder { /* Firefox 18- */
-  color: white;  
-}
-#search::-moz-placeholder {  /* Firefox 19+ */
-  color: white;  
-}
-#search:-ms-input-placeholder {  
-  color: white;  
-}
-.search-icon {
-  width: 22px;
-  right: 31px;
 }
