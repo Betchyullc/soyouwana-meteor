@@ -1,5 +1,5 @@
 .top-bar {
-  height:10%;
+  height:60px;
   background-color: #087CB1;
   font-family: proxima-nova-light;
   text-align:center;
@@ -34,17 +34,18 @@
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.find-goal-link {
+.login-link {
   float:right;
   margin-right:20px;
+  font-size: 26px;
+  line-height:60px;
 }
-.find-goal-link a {
-  font-size:30px;
-  color:#fff;
-  text-decoration:none;
+.login-link a.login-link-text {
+  color:white;
+  text-decoration:none !important;
 }
-.login-btns {
-  color:#fff;
+a.login-close-text {
+  color:black;
 }
 #search {
   border-radius:0;

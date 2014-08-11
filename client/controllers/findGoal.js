@@ -6,5 +6,12 @@ Template.findGoal.helpers({
     } else if (s != undefined) {
       return Goals.find({goal: {$regex: s, $options: 'i'}}).fetch();
     }
+  },
+  ownerName : function(){
+    var u = Meteor.users.findOne(this.owner)
+    if (u)
+      return u.profile.name;
+    else
+      return "";
   }
 });

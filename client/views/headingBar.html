@@ -5,9 +5,9 @@
       <input type="text" id="search" placeholder="Find a Goal" class="v-cntr-inner2"/>
       <a href="{{pathFor 'findGoal'}}"><img src="/search-icon.png" class="search-icon v-cntr-inner2"/></a>
     </div>
-    <div class="find-goal-link v-cntr-outer2">
+    <div class="login-link">
     {{#unless sessionGet 'goalId'}}
-      <span class="login-btns v-cntr-inner2">{{> loginButtons align="right"}}</span>
+      {{> loginButtons align="right"}}
     {{/unless}}
     </div>
   </div>
