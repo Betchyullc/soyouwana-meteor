@@ -1,13 +1,32 @@
 <template name="findGoal">
-  <div>
-  {{#each goals}}
-    <div class="goal-box">
-      goal:
-      <a href="/goal/{{_id}}">{{goal}}</a>
-      by {{deadline}}
-      for {{charity}}
-      Owner: {{ownerName}}
+  <div class="container">
+    <div class="l-align search-results">
+      <h1>Results (<span class="blue">{{resultCount}}</span>)</h1>
+    {{#each goals}}
+      <div class="goal-box">
+        <a class="bold" href="/goal/{{_id}}">I will {{goal}}.</a>
+        <br>
+        by {{ownerName}}<br>
+        {{#if whyGoal}}
+          {{whyGoal}}
+        {{else}}
+          {{#if whyCharity}}
+            {{whyCharity}}
+          {{else}}
+            The owner hasn't said much about this goal
+          {{/if}}
+        {{/if}}
+        <br>
+        <img src='/charity-wings.png'/> {{charity}}
+        <div>
+          <div>
+            <span class="green bold">${{raisedAmount}}</span>
+            <br>
+            Raised
+          </div>
+        </div>
+      </div>
+    {{/each}}
     </div>
-  {{/each}}
   </div>
 </template>

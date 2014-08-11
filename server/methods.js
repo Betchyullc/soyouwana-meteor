@@ -55,5 +55,12 @@ Meteor.methods({
         // call the api to pay the charity
       }
     });
+  },
+  amountRaised : function(goal){
+    var amt = 0;
+    _.each(Donations.find({goalId: goal._id}).fetch(),function(e, i, l){
+      amt += parseInt(e.amount);
+    });
+    return amt;
   }
 });
