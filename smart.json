@@ -3,6 +3,7 @@
     "iron-router": {},
     "bootstrap-datepicker2": {},
     "pagination": {},
-    "npm": {}
+    "npm": {},
+    "s3": {}
   }
 }

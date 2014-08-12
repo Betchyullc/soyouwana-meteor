@@ -31,7 +31,7 @@
         <textarea id="update-msg" type="text" placeholder="Keep your supporters in the loop with frequent updates"></textarea>
         <div class="update-bottom-row">
           <div class="update-bottom-row-left">
-            <a href="#"><img src="/camera.png" class="camera-icon"/> PHOTO</a>
+            <a href="#" data-toggle="modal" data-target="#uploadModal"><img src="/camera.png" class="camera-icon"/> PHOTO</a>
             <a href="#"><img src="/video.png" class="camera-icon"/> VIDEO</a>
           </div>
           <div class="update-bottom-row-right">
@@ -73,8 +73,11 @@
             <img src="/bg.jpg" style="height:110px; float:right; margin-right:8%;"/>
           {{/if}}
         {{/if}}
-      <p class="bold l-justify">Photo URL</p>
-      <p class="l-justify"><input id="photoURL" type="text" value="{{photoURL}}"/></p>
+      <p class="bold l-justify">Upload Photo</p>
+      <p class="l-justify">
+      {{#S3 callback="photoUpload"}}
+        <input id="photoURL" type="file">
+      {{/S3}}</p>
       <p class="bold l-justify">Video Embed</p>
       <p class="l-justify"><input id="videoEmbed" type="text" value="{{videoEmbed}}"/></p>
       <p><textarea id="whyGoal" placeholder="Inspirational Context">{{whyGoal}}</textarea></p>
@@ -82,4 +85,20 @@
     </div>
     <button id="savechanges">Save</button>
   </div>
+  <div id="uploadModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Upload Photo</h4>
+        </div>
+        <div class="modal-body">
+          <input type="file" id="updatePhoto"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </template>

@@ -65,5 +65,21 @@ Meteor.methods({
   },
   donorCount : function(gid){
     return Donations.find({goalId: gid}).count();
+  },
+  getGoalForUser : function(uid){
+    return Goals.findOne({owner: uid})._id;
+  },
+  photoUpload : function(url, context) {
+    Meteor.call('S3delete', Goals.findOne(context._id).photoURL);
+    Goals.update(context._id, { $set : {photoURL : url }});
+  },
+  makeUpdate : function(url, context){
+    Goals.update(context._id, { $push : {
+      updates: {
+        msg: context.msg,
+        photo: url,
+        created_at: Date.now()
+      }
+    }});
   }
 });

@@ -125,6 +125,9 @@
 #photoURL, #videoEmbed {
   width:40%;
 }
+#photoURL {
+  border:0;
+}
 #whyGoal, #whyCharity {
   font-size:16px;
   height:80px;

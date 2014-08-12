@@ -51,6 +51,7 @@ Template.editGoal.events({
     alert("Changes Saved");
   },
   'click #makeupdate': function(e){
+    var gid = this._id;
     var msg = $('#update-msg').val().trim();
     if(msg == "") {
       $('#update-msg').css('border-color','red');
@@ -59,16 +60,37 @@ Template.editGoal.events({
       }, 444);
       return;
     }
-    Goals.update(this._id, {
-      $push : {
-        updates: {
-          msg: msg,
-          created_at: Date.now()
-        }
-      }
-    });
+    if (Session.get('fileData') == undefined) {
+      Meteor.call("makeUpdate", "", {
+        _id: gid,
+        msg: msg
+      });
+    }
+    Meteor.call("S3upload",Session.get('fileData'),{
+      _id: gid,
+      msg: msg
+    }, "makeUpdate");
+
     alert('Update posted!');
     window.location.pathname = window.location.pathname.slice(0,-5);
+  },
+  'change input#updatePhoto' : function(e){
+    var files = e.currentTarget.files;
+    _.each(files,function(file){
+      var reader = new FileReader;
+      var fileData = {
+        name:file.name,
+        size:file.size,
+        type:file.type
+      };
+
+      reader.onload = function () {
+        fileData.data = new Uint8Array(reader.result);
+        Session.set('fileData',fileData);
+      };
+
+      reader.readAsArrayBuffer(file);
+    });
   },
   'click .complete-goal-btn': function(e){
     Meteor.call('winGoal', this._id);

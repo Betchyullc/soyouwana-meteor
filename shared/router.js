@@ -21,6 +21,7 @@ var accessBeforeAction = function(pause){
 };
 Router.map(function(){
   this.route('landing', {path: '/'});
+  this.route('faq');
   this.route('findGoal', {
     path: '/search',
     waitOn: function() { return Meteor.subscribe('goals');}

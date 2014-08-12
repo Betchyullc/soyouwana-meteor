@@ -5,9 +5,19 @@
       <input type="text" id="search" placeholder="Search Projects" class=""/>
       <a href="{{pathFor 'findGoal'}}" class="search-icon"><img src="/search-icon.png"/></a>
     </div>
-    <div class="login-link">
+    <div class="login-link dropdown">
     {{#unless sessionGet 'goalId'}}
+      <span id="drop-toggle" data-toggle="dropdown"></span>
       {{> loginButtons align="right"}}
+      {{#if currentUser}}
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="drop-toggle">
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/goal/{{userGoalId}}">View Goal</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/goal/{{userGoalId}}/edit">Edit Goal</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href="/faq">FAQ</a></li>
+          <li role="presentation" class="divider"></li>
+          <li role="presentation"><a id="logout-from-dropdown" role="menuitem" tabindex="-1" href="#">Log Out</a></li>
+        </ul>
+      {{/if}}
     {{/unless}}
     </div>
   </div>

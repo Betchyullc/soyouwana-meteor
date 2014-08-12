@@ -85,3 +85,12 @@
 a.login-close-text {
   color:black;
 }
+.login-link .dropdown-menu {
+  margin-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  left: inherit;
+  right:-20px;
+  text-align: left;
+  font-size: 16px;
+}
