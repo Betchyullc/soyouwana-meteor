@@ -62,5 +62,8 @@ Meteor.methods({
       amt += parseInt(e.amount);
     });
     return amt;
+  },
+  donorCount : function(gid){
+    return Donations.find({goalId: gid}).count();
   }
 });

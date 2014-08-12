@@ -4,9 +4,21 @@
       <h1>Results (<span class="blue">{{resultCount}}</span>)</h1>
     {{#each goals}}
       <div class="goal-box">
-        <a class="bold" href="/goal/{{_id}}">I will {{goal}}.</a>
+        {{#if videoEmbed}}
+          {{{videoEmbed}}}
+        {{else}}
+          <div class="photo">
+          {{#if photoURL}}
+            <img src="{{photoURL}}"/>
+          {{else}}
+            <img src="/bg.jpg"/>
+          {{/if}}
+          </div>
+        {{/if}}
+        <h3><a href="/goal/{{_id}}">I will {{goal}}.</a></h3>
+        <p>by {{ownerName}}</p>
         <br>
-        by {{ownerName}}<br>
+        <p>
         {{#if whyGoal}}
           {{whyGoal}}
         {{else}}
@@ -16,13 +28,24 @@
             The owner hasn't said much about this goal
           {{/if}}
         {{/if}}
+        </p>
         <br>
         <img src='/charity-wings.png'/> {{charity}}
-        <div>
+        <div class="bottom-row">
           <div>
             <span class="green bold">${{raisedAmount}}</span>
             <br>
             Raised
+          </div>
+          <div style="margin-left:15px">
+            <span class="green bold">{{donorCount}}</span>
+            <br>
+            Donors
+          </div>
+          <div style="margin-left:15px">
+            <span class="green bold">{{daysToGo}}</span>
+            <br>
+            Days to go
           </div>
         </div>
       </div>

@@ -2,17 +2,46 @@
   display:inline-block;
   margin:10px;
   padding:10px;
-  border: 1px solid #454545;
+  border: 1px solid #aeaeae;
   border-radius: 8px;
   width: 220px;
+  height:300px;
+  float:left;
+  font-family:proxima-nova-light;
+  font-size:14px;
+}
+.goal-box h3 {
+  font-family: proxima-nova-bold;
+  font-size: 18px;
+  margin: 10px 0;
+  margin-bottom:3px;
+}
+.goal-box p {
+  margin: 2px 0;
+}
+.goal-box .photo {
+  height: 120px;
+  width: 220px;
+  overflow:hidden;
+  margin-bottom:11px;
+}
+.goal-box .photo img {
+  width: 100%;
 }
 .l-align {
   text-align: left !important; /* okay, cause its a utility modifier */
 }
 .blue {
-  color: #087cb1 !important; 
+  color: #087cb1 !important; /* okay, cause its a utility modifier */
 }
 .search-results {
   width:80%;
   margin-left:10%;
+}
+.bottom-row {
+  margin-top:10px;
+}
+.bottom-row div {
+  display:inline-block;
+  float:left;
 }
