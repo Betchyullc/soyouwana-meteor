@@ -3,5 +3,5 @@ Template.finalInfo.goalId = function(){
 };
 
 Template.finalInfo.created = function(){
-  window.location.pathname = "/goal/"+Session.get('goalId')+"/edit";
+  Router.go( "/goal/"+Session.get('goalId')+"/edit?first=true");
 };

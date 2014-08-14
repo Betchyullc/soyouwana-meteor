@@ -38,14 +38,14 @@
   color: white;  
 }
 .search-icon {
-  width: 22px;
+  width: 18px;
   float: right;
   position: relative;
-  top: -35px;
+  top: -33px;
   right: -10px;
 }
 .search-icon img{
-  width:22px;
+  width:18px;
 }
 .v-cntr-outer2, .v-cntr-outer {
   height:100%;
@@ -75,7 +75,7 @@
   top:0;
   right:0;
   margin-right:20px;
-  font-size: 26px;
+  font-size: 22px;
   line-height:60px;
 }
 .login-link a.login-link-text {

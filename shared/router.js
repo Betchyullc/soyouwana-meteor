@@ -35,7 +35,11 @@ Router.map(function(){
     path: '/goal/:_id/edit',
     onBeforeAction: accessBeforeAction,
     waitOn: function() { return Meteor.subscribe('goalAndDonations', this.params._id);},
-    data: function() { return Goals.findOne(this.params._id); }
+    data: function() { 
+      if (this.params.first)
+        Session.set('firstEdit',true);
+      return Goals.findOne(this.params._id);
+    }
   });
   this.route('donate', {
     path: '/donate/:_id',

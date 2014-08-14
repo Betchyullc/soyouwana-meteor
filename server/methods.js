@@ -70,7 +70,9 @@ Meteor.methods({
     return Goals.findOne({owner: uid})._id;
   },
   photoUpload : function(url, context) {
-    Meteor.call('S3delete', Goals.findOne(context._id).photoURL);
+    var g = Goals.findOne(context._id);
+    if (g.photoURL)
+      Meteor.call('S3delete', g.photoURL);
     Goals.update(context._id, { $set : {photoURL : url }});
   },
   makeUpdate : function(url, context){

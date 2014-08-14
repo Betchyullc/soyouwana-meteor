@@ -36,8 +36,8 @@ if (Meteor.isServer) {
              && date_good;
     },
     remove: function (userId, doc) {
-    // can only remove your own documents
-    return doc.owner === userId;
+      // can only remove your own documents
+      return doc.owner === userId;
     }
   });
 }

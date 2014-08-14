@@ -7,6 +7,7 @@ var isBad = function(val){
       return new Date() > new Date(parts[2], parts[0]-1, parts[1]);
     } 
   } else {
+    return !_.contains(val, " ");
   }
   return false;
 };
@@ -80,6 +81,9 @@ Template.landing.events({
   'keypress' : function(e){
     if(e.keyCode == 13)
       next();
+  },
+  'click .goal-bar img': function(){
+    $('input#deadline').datepicker('show');
   }
 });
 
@@ -95,7 +99,7 @@ Template.yourGoal.rendered = function(){
 };
 Template.deadline.rendered = function(){
   Template.yourGoal.rendered();
-  $('input#deadline').datepicker();
+  $('input#deadline').datepicker({startDate: "+1d", autoclose: true});
 };
 Template.charity.rendered = Template.yourGoal.rendered;
 Template.signup.rendered = Template.yourGoal.rendered;

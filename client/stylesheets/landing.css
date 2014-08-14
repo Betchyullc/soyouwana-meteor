@@ -15,6 +15,7 @@ html,body{
   left: 33%;
   top: 33%;
   width: 33%;
+  min-width:347px;
   background-color: rgba(255,255,255,0.8);
   font-family: proxima-nova-thin;
   font-size: 37px;
@@ -24,6 +25,11 @@ html,body{
   -moz-box-shadow:    5px 5px 11px 0px rgba(50, 50, 50, 0.51);
   box-shadow:         5px 5px 11px 0px rgba(50, 50, 50, 0.51);
   padding: 20px;
+}
+@media (max-width:600px){
+  .box {
+    left: 19% !important;
+  }
 }
 /*
 .box-effect {
@@ -63,18 +69,39 @@ html,body{
   color: #111;
   border-radius:0;
 }
-.goal-bar input#deadline{
-  padding-left:39px;
-  width:70%;
-}
-.goal-bar input:focus{
-  border:1px solid black;
-}
 .goal-bar img {
   position: absolute;
   left: 14.5%;
   width: 22px;
   bottom: 33px;
+}
+.goal-bar input#deadline{
+  padding-left:39px;
+  width:69%;
+}
+@media (max-width:1334px){
+.goal-bar input#deadline{
+  width:64%;
+}
+}
+@media (max-width:1184px){
+.goal-bar input#deadline{
+  width:62%;
+  float: left;
+  position: relative;
+  top: 5px;
+}
+.goal-bar img {
+  left:16%;
+}
+}
+@media (max-width:1055px){
+  .goal-bar input#deadline{
+    width:58%;
+  }
+}
+.goal-bar input:focus{
+  border:1px solid black;
 }
 .go-btn {
   margin:0;

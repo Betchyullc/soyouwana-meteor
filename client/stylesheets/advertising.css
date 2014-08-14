@@ -1,0 +1,22 @@
+.ad-fotter {
+  position: fixed;
+  bottom:0;
+  padding: 20px;
+  font-family:proxima-nova-light;
+  font-size: 15px;
+  color: white;
+  text-align:right;
+  width:96%;
+}
+.ad-fotter a {
+  color:white;
+  padding-left:9px;
+}
+.ad-fotter a:hover {
+  color:white;
+  text-decoration:underline;
+}
+.ad-fotter span a {
+  padding-left:0;
+  padding-right:12px;
+}

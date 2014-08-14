@@ -28,6 +28,12 @@ Template.editGoal.helpers({
       amt += parseInt(dons[i].amount);
     }
     return parseFloat(amt).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').slice(0, -3);
+  },
+  firstEdit : function(){
+    return Session.get('firstEdit');
+  },
+  shouldShowPhoto : function(){
+    return !Session.get('firstEdit') || this.photoURL != undefined;
   }
 });
 Template.editGoal.events({
@@ -44,7 +50,7 @@ Template.editGoal.events({
 //        charity: $('input#charity').val().trim(),
         whyGoal: $('textarea#whyGoal').val().trim(),
         whyCharity: $('textarea#whyCharity').val().trim(),
-        photoURL: $('input#photoURL').val().trim(),
+//        photoURL: $('input#photoURL').val().trim(),
         videoEmbed: $('input#videoEmbed').val().trim()
       }
     });
@@ -103,6 +109,13 @@ Template.editGoal.events({
       Session.set('link-shown', true);
       $('#view-link').show();
       selectText('view-link');
+    }
+  },
+  'click #delete-goal' : function(e){
+    var msg = "Are you sure you want to PERMANENTLY delete your goal?";
+    if (confirm(msg)){
+      Goals.remove(this._id);
+      window.location.pathname = "/";
     }
   }
 });

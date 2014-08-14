@@ -1,18 +1,24 @@
 <template name="editGoal">
-  <h1 class="edit-header">I will {{goal}}</h1>
-  <div class="social-heading-bar">
-    <span class="bold">Share your page!</span>
-    {{> fbSmall}}
-    {{> twitter}}
-    <a href="#"><img src="/email.png" style="width:30px"/> Email</a>
-    <a id="share-link" href="#" style="float:right;">
-      <img src="/mouse.png" style="width:30px"/> Share Link
-      <div id="view-link" style="display:none">
-        http://www.doyouwana.com/goal/{{_id}}
-      </div>
-    </a>
-  </div>
+  <h1 class="edit-header">I will {{goal}} by {{deadline}}</h1>
+  {{#unless firstEdit}}
+    <div class="social-heading-bar">
+      <span class="bold">Share your page!</span>
+      {{> fbSmall}}
+      {{> twitter}}
+      <a href="#"><img src="/email.png" style="width:30px"/> Email</a>
+      <a id="share-link" href="#" style="float:right;">
+        <img src="/mouse.png" style="width:30px"/> Share Link
+        <div id="view-link" style="display:none">
+          http://www.doyouwana.com/goal/{{_id}}
+        </div>
+      </a>
+    </div>
+  {{/unless}}
+  {{#if firstEdit}}
+    <br>
+  {{/if}}
   <div class="edit-goal-body">
+    {{#unless firstEdit}}
     <h1>
       <img class="big-pic" src="{{currentUser.profile.picture}}"/>
       You Have Raised <span class="green bold">${{amountRaised}}</span>
@@ -42,6 +48,7 @@
         </div>
       </div>
     </div>
+    {{/unless}}
     <div class="l-col">
       <br>
       <p class="bold">Your Name</p>
@@ -70,7 +77,9 @@
           {{#if photoURL}}
             <img style="height:110px; float:right; margin-right:8%;" src="{{photoURL}}"/>
           {{else}}
-            <img src="/bg.jpg" style="height:110px; float:right; margin-right:8%;"/>
+            {{#if shouldShowPhoto}}
+              <img src="/bg.jpg" style="height:110px; float:right; margin-right:8%;"/>
+            {{/if}}
           {{/if}}
         {{/if}}
       <p class="bold l-justify">Upload Photo</p>
@@ -84,6 +93,7 @@
       <p><textarea id="whyCharity" placeholder="Moving Story">{{whyCharity}}</textarea></p>
     </div>
     <button id="savechanges">Save</button>
+    <a id="delete-goal" href="#">Delete Goal</a>
   </div>
   <div id="uploadModal" class="modal fade">
     <div class="modal-dialog">
