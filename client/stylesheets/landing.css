@@ -124,9 +124,12 @@ html,body{
   font-size: 19px;
   text-align: left;
   background-color: #fff;
+  max-height: 220px;
+  overflow-y: scroll;
 }
 .charity-list li {
   padding-left: 5px;
+  padding-bottom: 3px;
 }
 .charity-list li:hover {
   background-color: #1770B0;

@@ -1,28 +1,37 @@
 Template.charity.events({
   'keypress input' : function(e){
-    var val = $('input').val() + String.fromCharCode(e.keyCode);
+    var val = $('.goal-bar input').val() + String.fromCharCode(e.keyCode);
     val = val.toLowerCase();
+    if (val.length < 5)
+      return;
     if(e.keyCode == 8) {
 //      val = $('input').val();
       console.log(e.keyCode);
     }
-    var list = [
-      "Clear Lake Bible Church",
-      "Doctors without Borders",
-      "Engineers without Borders",
-      "Society for Prevention of Penis Mishandling"
-    ];
+    var params = {
+      q: 'organization_name:*'+val+'*', 
+    };
+    $.ajax({
+      dataType: 'jsonp',
+      contentType: 'application/json',
+      data: params,
+      jsonp: 'jsonpfunc',
+      url: 'http://graphapi.firstgiving.com/v1/list/organization?jsonpfunc=?',
+      success: function(data) {
+        var html = "<ul class='charity-list'>";
 
-    var html = "<ul class='charity-list'>";
+        for(var i = 0; i < data.payload.length; i++){
+          html += "<li>"+data.payload[i].organization_name+"</li>";
+        }
+        html += "</ul>";
 
-    for(var i = 0; i < list.length; i++){
-      if (list[i].toLowerCase().indexOf(val) != -1)
-        html += "<li>"+list[i]+"</li>";
-    }
-    html += "</ul>";
+        $('.charity-list').remove();
+        $('.box').append(html);
+      },
+      error: function(error) {
+      }
 
-    $('.charity-list').remove();
-    $('.box').append(html);
+    });
   },
   'click li': function(e){
 //    console.log(e);
