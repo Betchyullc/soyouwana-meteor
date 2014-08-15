@@ -100,6 +100,7 @@ Template.editGoal.events({
   },
   'click .complete-goal-btn': function(e){
     Meteor.call('winGoal', this._id);
+    $('#emailModal2').modal('show');
   },
   'click #share-link': function(e){
     if(Session.get('link-shown')){
@@ -117,6 +118,14 @@ Template.editGoal.events({
       Goals.remove(this._id);
       window.location.pathname = "/";
     }
+  },
+  'click #add-emails' : function(e){
+    Meteor.call('sendEmail', this._id, $('#email-list').val().trim());
+    $('#email-list').val('');
+  },
+  'click #send-email' : function(e){
+    Meteor.call('sendEmail2', this._id, $('#email-body').val().trim());
+    $('#email-body').val('');
   }
 });
 

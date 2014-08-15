@@ -36,7 +36,18 @@ Meteor.methods({
   },
   winGoal : function(_id){
     Goals.update(_id, {$set:{finished:true}});
+    var u = Meteor.users.findOne(Goals.findOne(_id).owner);
     _.each(Donations.find({goalId: _id}).fetch(), function(e, i, l){
+      // handle email alerts
+      if (e.email && u) {
+        Email.send({
+          to: e.email,
+          from: "noreply@reachrr.com",
+          subject: u.profile.name + " has succeeded!",
+          text: "You supported "+u.profile.name + "'s goal, and now they've done it! Your card will be charged, and your donation sent.\nBe sure to congratulate your friend."
+        });
+      }
+      //handle money
       if (e.submitted == true) return;
       var result = Async.runSync(function(done){
         gateway.transaction.sale({
@@ -83,5 +94,30 @@ Meteor.methods({
         created_at: Date.now()
       }
     }});
+  },
+  sendEmail : function(gid,toList){
+    var g = Goals.findOne(gid);
+    if (g == undefined)
+      return;
+    var u = Meteor.users.findOne(g.owner);
+    Email.send({
+      to: toList,
+      from: 'noreply@reachrr.com',
+      subject: u.profile.name + "'s exciting new goal",
+      text: u.profile.name + ' wants to ' + g.goal + " by " + g.deadline + " for charity!\n"+u.profile.name+" is raising money for "+ g.charity+ " and you can help.\nVisit this link for more information:\nhttp://www.reachrr.com/goal/"+gid
+    });
+  },
+  sendEmail2: function(gid, bodyText){
+    var u = Meteor.users.findOne(Goals.findOne(gid).owner);
+    _.each(Donations.find({goalId: gid}).fetch(), function(e, i, l){
+      if (e.email && u) {
+        Email.send({
+          to: e.email,
+          from: "noreply@reachrr.com",
+          subject: u.profile.name + " says thanks!",
+          text: bodyText
+        });
+      }
+    });
   }
 });

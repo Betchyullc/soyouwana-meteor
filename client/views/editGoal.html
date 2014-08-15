@@ -5,11 +5,11 @@
       <span class="bold">Share your page!</span>
       {{> fbSmall}}
       {{> twitter}}
-      <a href="#"><img src="/email.png" style="width:30px"/> Email</a>
+      <a href="#" data-toggle="modal" data-target="#emailModal"><img src="/email.png" style="width:30px"/> Email</a>
       <a id="share-link" href="#" style="float:right;">
         <img src="/mouse.png" style="width:30px"/> Share Link
         <div id="view-link" style="display:none">
-          http://www.doyouwana.com/goal/{{_id}}
+          http://reachrr.com/goal/{{_id}}
         </div>
       </a>
     </div>
@@ -111,4 +111,6 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+  {{> emailModal}}
+  {{> emailModal2}}
 </template>
