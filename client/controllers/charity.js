@@ -2,7 +2,7 @@ Template.charity.events({
   'keypress input' : function(e){
     var val = $('.goal-bar input').val() + String.fromCharCode(e.keyCode);
     val = val.toLowerCase();
-    if (val.length < 5)
+    if (val.length < 2)
       return;
     if(e.keyCode == 8) {
 //      val = $('input').val();
@@ -29,6 +29,7 @@ Template.charity.events({
         $('.box').append(html);
       },
       error: function(error) {
+        console.log(error);
       }
 
     });
