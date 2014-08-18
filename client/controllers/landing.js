@@ -2,6 +2,12 @@ var isBad = function(val){
   if(val == "") return true;
   if (Session.get('goal')) {
     if (Session.get('deadline')){
+      var matches_list = false;
+      _.each($('li'), function(e,i,l){
+        if ($(e).text() == val)
+          matches_list = true;
+      });
+      return !matches_list;
     } else {
       var parts = val.split('/');
       return new Date() > new Date(parts[2], parts[0]-1, parts[1]);
@@ -28,6 +34,7 @@ var next = function(e){
           Session.set('charity', val);
           var goalId = Goals.insert({
             charity: Session.get('charity'),
+            charity_uuid: Session.get('charity_uuid'),
             goal: Session.get('goal'),
             deadline: Session.get('deadline'),
             owner: Meteor.userId(),

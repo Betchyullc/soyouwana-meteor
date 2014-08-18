@@ -8,7 +8,15 @@
     <div class="login-link dropdown">
     {{#unless sessionGet 'goalId'}}
       <span id="drop-toggle" data-toggle="dropdown"></span>
-      {{> loginButtons align="right"}}
+      {{#unless currentUser}}
+        {{> loginButtons align="right"}}
+      {{else}}
+        {{#if currentUser.profile.name}}
+          <a class="login-link-text" id="login-name-link">{{currentUser.profile.name}} ▾</a>
+        {{else}}
+          <a class="login-link-text" id="login-name-link">My Account ▾</a>
+        {{/if}}
+      {{/unless}}
       {{#if currentUser}}
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="drop-toggle">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/goal/{{userGoalId}}">View Goal</a></li>
