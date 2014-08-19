@@ -3,5 +3,6 @@ Template.finalInfo.goalId = function(){
 };
 
 Template.finalInfo.created = function(){
+  Goals.update(Session.get('goalId'), {$set: {owner : Meteor.userId()}});
   Router.go( "/goal/"+Session.get('goalId')+"/edit?first=true");
 };

@@ -12,7 +12,7 @@
         {{> loginButtons align="right"}}
       {{else}}
         {{#if currentUser.profile.name}}
-          <a class="login-link-text" id="login-name-link">{{currentUser.profile.name}} ▾</a>
+          <img class="smallpic" src="{{currentUser.profile.picture}}"/> <a class="login-link-text" id="login-name-link">{{currentUser.profile.name}} ▾</a>
         {{else}}
           <a class="login-link-text" id="login-name-link">My Account ▾</a>
         {{/if}}

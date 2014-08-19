@@ -8,6 +8,7 @@ Router.onBeforeAction(function(){
   Session.set('deadline', undefined);
   Session.set('charity', undefined);
   Session.set('goalId', undefined);
+  Session.set('firstEdit', undefined);
 });
 var accessBeforeAction = function(pause){
   var goal = Goals.findOne(this.params._id);

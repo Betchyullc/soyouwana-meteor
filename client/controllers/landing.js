@@ -110,7 +110,3 @@ Template.deadline.rendered = function(){
 };
 Template.charity.rendered = Template.yourGoal.rendered;
 Template.signup.rendered = Template.yourGoal.rendered;
-Template.finalInfo.rendered = function(){
-  Template.yourGoal.rendered();
-  Goals.update(Session.get('goalId'), {$set: {owner : Meteor.userId()}});
-};

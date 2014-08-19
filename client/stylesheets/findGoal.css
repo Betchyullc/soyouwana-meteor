@@ -4,11 +4,12 @@
   padding:10px;
   border: 1px solid #aeaeae;
   border-radius: 8px;
-  width: 220px;
+  width: 225px;
   height:300px;
   float:left;
   font-family:proxima-nova-light;
   font-size:14px;
+  overflow-y:auto;
 }
 .goal-box h3 {
   font-family: proxima-nova-bold;

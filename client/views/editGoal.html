@@ -1,5 +1,9 @@
 <template name="editGoal">
-  <h1 class="edit-header">I will {{goal}} by {{deadline}}</h1>
+  <h1 class="edit-header">I will {{goal}} by {{deadline}}
+    {{#if firstEdit}}
+      for {{charity}}
+    {{/if}}
+  </h1>
   {{#unless firstEdit}}
     <div class="social-heading-bar">
       <span class="bold">Share your page!</span>
