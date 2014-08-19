@@ -67,6 +67,22 @@ Template.goalDetail.helpers({
       return usr.profile.name;
     else
       return "";
+  },
+  comments : function(){
+    return Comments.find({}, {skip: Session.get('comment-skip') || 0, limit: 10, sort: {created_at: -1}});
+  },
+  commentShowingText : function(){
+    var count = Comments.find({}).count();
+    return "<span class='bold'>"+(Session.get('comment-skip') || 1)+" - "+Math.min((Session.get('comment-skip') || 0)+10, count)+"</span> of <span class='bold'>"+count+"</span>";
+  },
+  previousComments : function(){
+    return (Session.get('comment-skip') || 0) > 0;
+  },
+  nextComments : function(){
+    return (Session.get('comment-skip') || 0)+10 < Comments.find({}).count();
+  },
+  commentCount : function(){
+    return Comments.find({}).count();
   }
 });
 
@@ -79,6 +95,32 @@ Template.goalDetail.events({
   'click .prev-donations':function(e){
     Session.set('skip', Math.max((Session.get('skip') || 0) - 10, 0));
     setTimeout(function(){jQuery("time.timeago").timeago();}, 1000);
+  },
+  'click .next-comments':function(e){
+    var count = Comments.find({}).count();
+    Session.set('comment-skip', Math.min((Session.get('comment-skip') || 0) + 10, Math.max(0, count - 10)));
+    setTimeout(function(){jQuery("time.timeago").timeago();}, 1000);
+  },
+  'click .prev-comments':function(e){
+    Session.set('comment-skip', Math.max((Session.get('comment-skip') || 0) - 10, 0));
+    setTimeout(function(){jQuery("time.timeago").timeago();}, 1000);
+  },
+  'click #create-comment-btn': function(e){
+    var u = Meteor.user();
+    if (u == null)
+      return;
+    var name = u.profile && u.profile.name ? u.profile.name : "Anonymous";
+    var pic = u.profile && u.profile.picture ? u.profile.picture : "http://4.bp.blogspot.com/-Zzu7j6aQk-k/UkATzmjQqhI/AAAAAAAABBk/ofjNB5YQMLM/s1600/facebook-default--profile-pic6.jpg";
+    Comments.insert({
+      msg: $('#new-comment-text').val().trim(),
+      created_at: Date.now(),
+      uid: Meteor.userId(),
+      goalId: this._id,
+      user_name: name,
+      user_pic: pic
+    });
+    $('#new-comment-text').val('');
+    setTimeout(function(){jQuery("time.timeago").timeago();}, 1500);
   }
 });
 

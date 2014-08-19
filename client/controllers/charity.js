@@ -21,7 +21,7 @@ Template.charity.events({
         contentType: 'application/json',
         data: params,
         jsonp: 'jsonpfunc',
-        url: 'http://graphapi.firstgiving.com/v1/list/organization?jsonpfunc=?',
+        url: 'https://graphapi.firstgiving.com/v1/list/organization?jsonpfunc=?',
         success: function(data) {
           var html = "<ul class='charity-list'>";
 

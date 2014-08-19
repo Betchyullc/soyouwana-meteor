@@ -24,10 +24,8 @@ Template.donate.helpers({
 Template.donate.events({
   'click .submit-btn': function(e){
     var amt = $('.amount').val();
-    if (amt == "") {
+    if (amt == "" || Session.get('submitted-donation'))
       e.preventDefault();
-    } else {
-    }
   }
 });
 
@@ -38,10 +36,10 @@ Template.donate.rendered = function(){
     braintree.setup(res.result, 'dropin', {
       container: 'dropin',
       paymentMethodNonceReceived: function (event, nonce) {
+        Session.set('submitted-donation', true);
+        $('.submit-btn').attr("disabled", "disabled");
         var name = $('#donate-name').val().trim() || "Anonymous";
         Meteor.call('donate', nonce, name, function(err,res){
-          console.log(err);
-          console.log(res);
           Donations.insert({
             amount: $('#amount').val(),
             goalId: $('#goal-id').text(),

@@ -99,7 +99,10 @@ Meteor.methods({
     return Donations.find({goalId: gid}).count();
   },
   getGoalForUser : function(uid){
-    return Goals.findOne({owner: uid, finished: {$ne: true}})._id;
+    var g =Goals.findOne({owner: uid, finished: {$ne: true}});
+    if(g)
+      return g._id;
+    return "";
   },
   photoUpload : function(url, context) {
     var g = Goals.findOne(context._id);

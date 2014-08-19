@@ -42,6 +42,10 @@
   font-size: 25px;
   color: #fff;
 }
+.submit-btn:disabled {
+  background-color:#aeaeae;
+  border-bottom:3px solid #454545;
+}
 #dropin {
   margin-left:5%;
   width:90%;

@@ -9,7 +9,7 @@ if (Meteor.isServer) {
 
   Donations.allow({
     insert: function (userId, doc) {
-      //existence
+      //existence checking
       return doc.amount && doc.created_at 
              && doc.customer && doc.goalId
              && doc.name 

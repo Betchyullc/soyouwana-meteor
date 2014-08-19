@@ -195,3 +195,27 @@
   font-size:45px;
   font-family: proxima-nova-bold;
 }
+.comment img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  margin: 9px;
+}
+.comment div {
+  text-align: left;
+  margin-left: 30px;
+  min-height: 50px;
+  padding: 9px;
+}
+.comment div h3 {
+  font-size: 20px;
+}
+.comment div p {
+  padding: 0;
+}
+.new-comment {
+  float: right;
+  padding-right: 15px;
+  font-family: proxima-nova-bold;
+}

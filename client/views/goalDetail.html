@@ -53,12 +53,30 @@
         </div>
 
         <div class="data-box">
-          <h1>{{commentCount}} Comments</h1>
-          {{#each comment}}
-            <p>{{msg}}</p>
+          <h1>{{commentCount}} Comments<a href="#" class="new-comment" data-toggle="modal" data-target="#newCommentModal">+</a></h1>
+          {{#each comments}}
+            <div class="comment">
+              <img src="{{user_pic}}"/>
+              <div>
+                <h3>{{user_name}} <time class="timeago f-small" datetime="{{formatCreatedAt created_at}}">{{created_at}}</time></h3>
+                <p>{{msg}}</p>
+              </div>
+            </div>
           {{else}}
             <p>No comments</p>
           {{/each}}
+
+          <div class="pagination-links">
+          {{#if previousComments}}
+            <span class="prev-comments">&#8592;</span>
+          {{/if}}
+
+          {{{commentShowingText}}}
+
+          {{#if nextComments}}
+            <span class="next-comments">&#8594;</span>
+          {{/if}}
+          </div>
         </div>
       </div>
       
@@ -110,4 +128,6 @@
 
     </div>
   </div>
+
+  {{> newCommentModal}}
 </template>
