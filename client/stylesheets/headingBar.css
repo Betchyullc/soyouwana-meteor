@@ -5,10 +5,10 @@
   text-align:center;
 }
 .logo {
-  height:60px;
-  position:absolute;
-  top:0;
-  left:0;
+  height: 46px;
+  position: absolute;
+  top: 5px;
+  left: 7px;
 }
 .logo img {
   height:100%;
