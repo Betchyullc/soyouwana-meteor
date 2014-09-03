@@ -1,7 +1,46 @@
 <template name="signup">
   <div class="box">
-    <h1>You will {{sessionGet 'goal'}} by {{sessionGet 'deadline'}} for {{sessionGet 'charity'}}</h1>
-    <h2>But who are you?</h2>
-    {{> loginButtons}}
+    <h1>Who are you?</h1>
+    <div class="">
+      <div class="l-col2">
+        <p>You will</p>
+        <p>by</p>
+        <p>for</p>
+      </div>
+      <div class="r-col2">
+        <p>{{sessionGet 'goal'}}</p>
+        <p>{{sessionGet 'deadline'}}</p>
+        <p>{{sessionGet 'charity'}}</p>
+      </div>
+    </div>
+    <hr>
+    {{> customLoginBtns}}
+    
   </div>
+</template>
+
+<template name="customLoginBtns">
+  {{#unless sessionGet 'signin-view'}}
+    <div class="facebook-big-btn">Sign up With Facebook</div>
+    <h2>&mdash; or &mdash;</h2>
+    <form class="access-form">
+      <input id="signup-email" type="text" placeholder="Email"/>
+      <input id="signup-password" type="password" placeholder="Password"/>
+      <input id="signup-password-confirm" type="password" placeholder="Confirm Password"/>
+      <br>
+      <button class="signup-btn">Sign up</button>
+    </form>
+    <a href="#" class="customLogin-link signinlink" style="float:right">Sign in</a>
+  {{else}}
+    <div class="facebook-big-btn">Sign in With Facebook</div>
+    <h2>&mdash; or &mdash;</h2>
+    <form class="access-form">
+      <input id="signin-email" type="text" placeholder="Email"/>
+      <input id="signin-password" type="password" placeholder="Password"/>
+      <br>
+      <button class="signin-btn">Sign in</button>
+    </form>
+    <a href="#" class="customLogin-link">Forgot Password</a>
+    <a href="#" class="customLogin-link createlink" style="float:right">Create Account</a>
+  {{/unless}}
 </template>

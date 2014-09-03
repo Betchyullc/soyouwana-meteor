@@ -1,0 +1,57 @@
+.l-col2 {
+  width:22%;
+  float:left;
+  text-align:right;
+}
+.l-col2 p {
+  font-family:proxima-nova-bold;
+}
+.r-col2 {
+  width:74%;
+  float:right;
+  text-align:left;
+  padding-left:10px;
+}
+.l-col2 p, .r-col2 p {
+  font-size:18px;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+
+  clear:both;
+
+  position: relative;
+  top: 10px;
+  margin-bottom: 20px;
+}
+
+
+.customLogin-link {
+  color: #111;
+  font-size: 15px;
+  text-decoration:underline;
+}
+.customLogin-link:hover {
+  color: #111;
+  text-decoration:underline;
+}
+.access-form input {
+  border: 1px solid black;
+  border-radius: 0;
+  font-family:proxima-nova-light;
+}
+.access-form button {
+  font-family: proxima-nova-bold;
+  font-size: 18px;
+  color: #fff;
+  background-color: #47b548;
+  border:0;
+  border-bottom: 3px solid #1c6d28;
+  border-radius: 10px;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
