@@ -11,4 +11,7 @@ FG.token = "46c39cdb-d37e-48b0-8b86-610d8ddff29c";
 
 Meteor.startup(function(){
 
+  Meteor.setInterval(function(){
+    Goals.remove({owner: null,  created_at: {$lt: (Date.now()-180000)}}); // remove orphaned goals
+  }, 1000*60*60*3);// every 3 hours
 });

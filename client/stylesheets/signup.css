@@ -32,6 +32,7 @@ hr {
   color: #111;
   font-size: 15px;
   text-decoration:underline;
+  float: left;
 }
 .customLogin-link:hover {
   color: #111;
@@ -54,4 +55,8 @@ hr {
   padding-right: 9px;
   padding-top: 5px;
   padding-bottom: 5px;
+}
+#signin-password, #signup-password-confirm {
+  position: relative;
+  left: 5px;
 }

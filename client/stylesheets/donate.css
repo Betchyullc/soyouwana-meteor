@@ -52,3 +52,13 @@
   border:1px solid #454545;
   padding:2px;
 }
+#dropin h2 {
+  font-family: proxima-nova-bold;
+  text-align: left;
+  margin-left:5%;
+  margin-top: 9px;
+}
+#dropin input {
+  border:0;
+  width:90%;
+}

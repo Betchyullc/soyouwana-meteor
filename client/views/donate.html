@@ -11,9 +11,20 @@
       <form>
         <input type='text' id="donate-name" placeholder="Your Name"/>
         <h2 class="bold">via</h2>
-        <div id="dropin">loading form...</div>
-        <h2 class="bold" style="padding-top:9px;">Your Email (optional)</h2>
-        <input id="email" placeholder="blah@place.com"/><br>
+        <div id="dropin">
+          <h2>Credit Card</h2>
+          <input type="tel" inputmode="numeric" placeholder="Card Number" autocomplete="off" id="credit-card-number">
+          <input id="expiration" name="expiration" type="tel" inputmode="numeric" placeholder="Expiration Date" autocomplete="off">
+          <input id="cvv" name="cvv" maxlength="4" type="tel" inputmode="numeric" placeholder="CVV" autocomplete="off" autocapitalize="off">
+          <h2>Billing Info</h2>
+          <input id="first-name" name="first-name" type="text" placeholder="First Name" autocomplete="off">
+          <input id="last-name" name="last-name" type="text" placeholder="Last Name" autocomplete="off">
+          <input id="address" name="address" type="text" placeholder="Billing Address" autocomplete="off">
+          <input id="city" name="city" type="text" placeholder="Billing City" autocomplete="off">
+          <input id="state" name="state" type="text" placeholder="Billing State" autocomplete="off" maxlength="2">
+          <input id="zip-code" name="zip-code" type="tel" inputmode="numeric" placeholder="Billing Zip" autocomplete="off" maxlength="6">
+          <input id="email" name="email" type="text" placeholder="Billing Email" autocomplete="off" maxlength="50">
+        </div>
         <h2 class="bold" style="padding-top:9px;">Leave a comment with your donation</h2>
         <textarea id="donate-msg" placeholder="Optional Message"></textarea><br>
         <input type="submit" class="submit-btn" title="Continue">

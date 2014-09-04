@@ -1,11 +1,3 @@
-var bt = Meteor.require('braintree');
-var gateway = bt.connect({
-  environment: bt.Environment.Sandbox,
-  merchantId: 'vfhpwqw9g896qnzh',
-  publicKey: 'p8s4g5cpczwqj3gp',
-  privateKey: '97f4b0a67bf1974bea764beccd95f8f4'
-});
-var clientToken = "";
 // setup lib for xml to json
 var parseString = Meteor.require('xml2js').parseString;
 
@@ -13,29 +5,35 @@ Meteor.methods({
   twitter_share_count : function(url) {
     return HTTP.get('http://urls.api.twitter.com/1/urls/count.json?url='+url);
   },
-  donate : function(nonce, name){
-    if(name == "") name = "Anonymous";
-    var result = Async.runSync(function(done){
-      gateway.customer.create({
-        firstName: name,
-        paymentMethodNonce: nonce
-      }, function(err, data){
-        done(null, data);
+  donate : function(cardData, gId) {
+    var goal = Goals.find(gId);
+    var fgResponse = Async.runSync(function(done){
+      parseString( HTTP.call("POST", FG.endpoint+"cardonfile", {
+        headers: {
+          "JG_APPLICATIONKEY" : FG.key,
+          "JG_SECURITYTOKEN" :  FG.token
+        },
+        content: "ccNumber="+cardData.number+
+                 "&ccType="+cardData.cardType+
+                 "&ccExpDateYear="+cardData.expiration.substr(3,2)+
+                 "&ccExpDateMonth="+cardData.expiration.substr(0,2)+
+                 "&ccCardValidationNum="+cardData.cvv+
+                 "&accountName="+cardData.first+"+"+cardData.last+
+                 "&billToFirstName="+cardData.first+
+                 "&billToLastName="+cardData.last+
+                 "&billToAddressLine1="+cardData.addr+
+                 "&billToCity="+cardData.city+
+                 "&billToZip="+cardData.zip+
+                 "&billToCountry=US&billToEmail="+cardData.email+
+                 "&billToState="+cardData.state+
+                 "&amount="+parseInt(cardData.amount)+
+                 ".00&remoteAddr=192.168.0.34&currencyCode=USD&charityId="+goal.charity_uuid
+      }).content, function(err,res){
+        done(err, res);
       });
-    });
-    return result;
-  },
-  clientToken : function(){
-    if(clientToken == ""){
-      clientToken = Async.runSync(function(done){
-        gateway.clientToken.generate({
-        //  customerId: aCustomerId
-        }, function (err, response) {
-          done(err, response.clientToken);
-        });
-      });
-    }
-    return clientToken;
+    }).result.firstGivingDonationApi.firstGivingResponse;
+    console.log(fgResponse);
+    return fgResponse;
   },
   winGoal : function(_id){
     Goals.update(_id, {$set:{finished:true}});
@@ -54,18 +52,7 @@ Meteor.methods({
       }
       //handle money
       if (e.submitted == true) return;
-      var result = Async.runSync(function(done){
-        gateway.transaction.sale({
-          customerId: e.customer,
-          amount: e.amount,
-          options: {
-            submitForSettlement: true
-          }
-        }, function(err,res){
-          done(err, res);
-        });
-      });
-      console.log(result);
+      // call FG api to transact from cardonfile
       if (result.result.success) {
         Donations.update(e._id, { $set : { submitted: true }});
         // add to the total money recieved.
