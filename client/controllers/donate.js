@@ -13,18 +13,19 @@ var typeFromNumber = function(number){
     default:
       //None of the above - so check the
       //first four digits collectively
-      switch(parseInt(number.substr(0,4)){
+      switch(parseInt(number.substr(0,4))){
         case 2014:
         case 2149:
           return "ER"
-        case 2131, 1800
+        case 2131:
+        case 1800:
           return "JB";
         case 6011:
           return "DI";
         default:
           //None of the above - so check the
           //first three digits collectively
-          switch(parseInt(number.substr(0,3)){
+          switch(parseInt(number.substr(0,3))){
             case 300:
             case 301:
             case 302:
@@ -35,7 +36,7 @@ var typeFromNumber = function(number){
             default:
               //None of the above -
               //'so simply check the first digit
-              switch(parseInt(number.substr(0,1)){
+              switch(parseInt(number.substr(0,1))){
                 case 3:
                   return "JB";
                 case 4:
