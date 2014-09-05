@@ -1,9 +1,0 @@
-{
-  "packages": {
-    "iron-router": {},
-    "bootstrap-datepicker2": {},
-    "pagination": {},
-    "npm": {},
-    "s3": {}
-  }
-}

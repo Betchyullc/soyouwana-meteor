@@ -1,5 +1,50 @@
 var typeFromNumber = function(number){
-  return "VI";
+  //Check the first two digits first
+  switch(parseInt(number.substr(0,2)) ){
+    case 34:
+    case 37:
+      return "AX";
+    case 51:
+    case 52:
+    case 53:
+    case 54:
+    case 55:
+      return "MC";
+    default:
+      //None of the above - so check the
+      //first four digits collectively
+      switch(parseInt(number.substr(0,4)){
+        case 2014:
+        case 2149:
+          return "ER"
+        case 2131, 1800
+          return "JB";
+        case 6011:
+          return "DI";
+        default:
+          //None of the above - so check the
+          //first three digits collectively
+          switch(parseInt(number.substr(0,3)){
+            case 300:
+            case 301:
+            case 302:
+            case 303:
+            case 304:
+            case 305:
+              return "AD";
+            default:
+              //None of the above -
+              //'so simply check the first digit
+              switch(parseInt(number.substr(0,1)){
+                case 3:
+                  return "JB";
+                case 4:
+                default:
+                  return "VI";
+              }
+          }
+      }
+  }
 }
 Template.donate.helpers({
   goal : function(){
