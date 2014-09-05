@@ -8,6 +8,7 @@ FG = {};
 FG.endpoint = "http://usapisandbox.fgdev.net/"; //"https://api.firstgiving.com/"
 FG.key = "83da2428-384d-4b73-b5fd-978bf5b5e043";
 FG.token = "46c39cdb-d37e-48b0-8b86-610d8ddff29c";
+FG.localIp = "192.168.0.34";
 
 Meteor.startup(function(){
 

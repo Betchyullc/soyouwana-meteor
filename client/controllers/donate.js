@@ -48,7 +48,7 @@ Template.donate.events({
         amount: $('#amount').val()
       };
       cardData.cardType = typeFromNumber(cardData.number);
-      Meteor.call('donate', cardData, $('#goal-id').text(), function(err,res){
+      Meteor.call('donate', cardData, function(err,res){
         console.log(res);
         Donations.insert({
           amount: cardData.amount,

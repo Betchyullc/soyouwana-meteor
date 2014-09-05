@@ -1,19 +1,26 @@
 // setup lib for xml to json
-var parseString = Meteor.require('xml2js').parseString;
+var parseString = Meteor.npmRequire('xml2js').parseString;
+
+var fgAPI = function(targetAddr,contentString){
+    return Async.runSync(function(done){
+      parseString( HTTP.call("POST", FG.endpoint+targetAddr, {
+        headers: {
+          "JG_APPLICATIONKEY" : FG.key,
+          "JG_SECURITYTOKEN" :  FG.token
+        },
+        content: contentString
+      }).content, function(err,res){
+        done(err, res);
+      });
+    });
+};
 
 Meteor.methods({
   twitter_share_count : function(url) {
     return HTTP.get('http://urls.api.twitter.com/1/urls/count.json?url='+url);
   },
-  donate : function(cardData, gId) {
-    var goal = Goals.find(gId);
-    var fgResponse = Async.runSync(function(done){
-      parseString( HTTP.call("POST", FG.endpoint+"cardonfile", {
-        headers: {
-          "JG_APPLICATIONKEY" : FG.key,
-          "JG_SECURITYTOKEN" :  FG.token
-        },
-        content: "ccNumber="+cardData.number+
+  donate : function(cardData) {
+    var content= "ccNumber="+cardData.number+
                  "&ccType="+cardData.cardType+
                  "&ccExpDateYear="+cardData.expiration.substr(3,2)+
                  "&ccExpDateMonth="+cardData.expiration.substr(0,2)+
@@ -26,12 +33,8 @@ Meteor.methods({
                  "&billToZip="+cardData.zip+
                  "&billToCountry=US&billToEmail="+cardData.email+
                  "&billToState="+cardData.state+
-                 "&amount="+parseInt(cardData.amount)+
-                 ".00&remoteAddr=192.168.0.34&currencyCode=USD&charityId="+goal.charity_uuid
-      }).content, function(err,res){
-        done(err, res);
-      });
-    }).result.firstGivingDonationApi.firstGivingResponse;
+                 "&remoteAddr="+FG.localIp;
+    var fgResponse = fgAPI("cardonfile", content).result.firstGivingDonationApi.firstGivingResponse;
     console.log(fgResponse);
     return fgResponse;
   },
@@ -39,7 +42,6 @@ Meteor.methods({
     Goals.update(_id, {$set:{finished:true}});
     var g = Goals.findOne(_id);
     var u = Meteor.users.findOne(g.owner);
-    var tot = 0;
     _.each(Donations.find({goalId: _id}).fetch(), function(e, i, l){
       // handle email alerts
       if (e.email && u) {
@@ -51,29 +53,22 @@ Meteor.methods({
         });
       }
       //handle money
-      if (e.submitted == true) return;
+      if (e.submitted == true) return; // obviously, don't double-charge cards
       // call FG api to transact from cardonfile
-      if (result.result.success) {
+      // supposedly, our cut comes out of this automatically
+      var result = fgAPI("donation/creditcard", 
+        "cardOnFileId="+e.customer+
+        "&amount="+parseInt(e.amount)+".00"+
+        "&remoteAddr="+FG.localIp+"&currencyCode=USD"+
+        "&charityId="+g.charity_uuid+
+        "&description=Reachrr+donation+on+behalf+of+users+completed+goal"
+      );
+      console.log(result.result);
+      if (result.result && result.result.firstGivingDonationApi && result.result.firstGivingDonationApi.firstGivingResponse) {
         Donations.update(e._id, { $set : { submitted: true }});
-        // add to the total money recieved.
-        tot += parseFloat(e.amount);
+        console.log(result.result.firstGivingDonationApi.firstGivingResponse);
       }
     });
-    // call the api to pay the charity
-    Meteor.setTimeout(function(){
-      var fgResponse = Async.runSync(function(done){
-        parseString( HTTP.call("POST", FG.endpoint+"donation/creditcard", {
-          headers: {
-            "JG_APPLICATIONKEY" : FG.key,
-            "JG_SECURITYTOKEN" :  FG.token
-          },
-          content: "ccNumber=4457010000000009&ccType=VI&ccExpDateYear=18&ccExpDateMonth=01&ccCardValidationNum=150&billToFirstName=Adam&billToLastName=Baratz&billToAddressLine1=1+Main+St.&billToCity=Burlington&billToZip=01803&billToCountry=US&billToEmail=adamb%40reachrr.com&billToState=MA&amount="+parseInt(tot)+".00&remoteAddr=107.10.210.236&currencyCode=USD&charityId="+g.charity_uuid+"&description=Reachrr+donation+on+behalf+of+users+completed+goal"
-        }).content, function(err,res){
-          done(err, res);
-        });
-      }).result.firstGivingDonationApi.firstGivingResponse;
-      console.log(fgResponse);
-    }, 1000*60*60*24*5); // wait 5 days to send money to firstgiving
   },
   amountRaised : function(goal){
     var amt = 0;
