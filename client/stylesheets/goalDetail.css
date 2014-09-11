@@ -63,6 +63,9 @@
 }
 .donate-box img {
   padding:9px;
+  width: 28%;
+  display:block;
+  margin-left:36%;
 }
 .donate-box h1, .donate-box h2 {
   font-family:proxima-nova-light;
@@ -80,10 +83,14 @@
   margin-bottom:5px;
   padding-top:0;
 }
-.donate-box img {
-  width: 20%;
-  display:block;
-  margin-left:40%;
+.donate-box img.smallpic{
+  padding: 3px;
+  width: 34px;
+  height: 34px;
+  display: inline;
+  margin-left:0;
+  position:relative;
+  top:13px;
 }
 .f-big {
   font-size: 40px;

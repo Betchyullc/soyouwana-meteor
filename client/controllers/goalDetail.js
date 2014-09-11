@@ -83,6 +83,20 @@ Template.goalDetail.helpers({
   },
   commentCount : function(){
     return Comments.find({}).count();
+  },
+  showOwnerPic : function(){
+    var usr = Meteor.users.findOne(this.owner);
+    if (usr && usr.profile.picture)
+      return true;
+    else
+      return false;
+  },
+  ownerPic : function(){
+    var usr = Meteor.users.findOne(this.owner);
+    if (usr && usr.profile.picture)
+      return usr.profile.picture;
+    else
+      return false;
   }
 });
 

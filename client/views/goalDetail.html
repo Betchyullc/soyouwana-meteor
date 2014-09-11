@@ -2,7 +2,7 @@
   <div class="container">
       
       {{#if ownersGoal}}
-        <a style="position:absolute; top:60px; right:0px; margin:9px;" href="/goal/{{_id}}/edit">edit</a>
+        <a style="position:absolute; top:60px; right:0px; margin:9px;" href="/goal/{{_id}}/edit">update!</a>
       {{/if}}
 
       <h1>I will {{goal}} by {{deadline}}</h1>
@@ -82,7 +82,12 @@
       
       <div class="goal-right-col">
         <div class="donate-box">
-          <div class="owner-info f-norm">{{ownerName}}</div>
+          <div class="owner-info f-norm">
+            {{#if showOwnerPic}}
+              <img class="smallpic" src="{{ownerPic}}"/>
+            {{/if}}
+            {{ownerName}}
+          </div>
           <h1><span class="bold f-big">${{donatedAmount}}</span> raised</h1>
           <h2>by <span class="bold">{{donatorCount}} people</span> in <span class="bold">{{timeLive}} days</span></h2>
           {{#unless finished}}
@@ -91,7 +96,7 @@
             Goal complete--Donations closed
           {{/unless}}
           <div style="padding-top:10px;">{{> facebook}}</div>
-          <img src="http://i.imgur.com/SroaIc4.png">
+          <img src="/logo-color.png">
         </div>
         
         <div class="donations-feed">
